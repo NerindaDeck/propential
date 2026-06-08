@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en-AU" data-gold="balanced">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Repayment calculator — Propential</title>
+<meta name="description" content="See an indicative monthly repayment for a Propential property-secured loan at 17.95% p.a., with establishment and account-keeping fees shown in full.">
+<link rel="icon" href="assets/propential_mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="propential.css">
+<link rel="stylesheet" href="propential-v3.css">
+</head>
+<body data-page="calculator">
+<a class="skip" href="#main">Skip to content</a>
+<div class="v3-bg" aria-hidden="true"></div>
+<div class="v3-progress" id="vprog" aria-hidden="true"></div>
+
+<header id="site-nav"></header>
+
+<main id="main">
+
+<section class="page-head glow-bg">
+  <div class="wrap">
+    <span class="eyebrow">Repayment calculator</span>
+    <h1>See what it costs, <span class="italic-gold">before you apply.</span></h1>
+    <p class="lead">Move the two sliders — how much you'd like to borrow, and over how long. We'll show an indicative monthly repayment at one clear rate of 17.95% p.a., with the establishment and account-keeping fees laid out in full. Nothing hidden, nothing stored.</p>
+  </div>
+</section>
+
+<section class="section calc-section" style="padding-top:0">
+  <div class="wrap">
+    <div class="calc-shell">
+
+      <!-- INPUTS -->
+      <div class="calc-inputs">
+        <div class="calc-field">
+          <div class="calc-field__top">
+            <label for="amount">How much would you like to borrow?</label>
+            <output class="calc-field__val" id="amountOut">$25,000</output>
+          </div>
+          <input class="range" type="range" id="amount" min="5000" max="100000" step="1000" value="25000" aria-describedby="amountScale">
+          <div class="range-scale" id="amountScale"><span>$5k</span><span>$100k</span></div>
+        </div>
+
+        <div class="calc-field">
+          <div class="calc-field__top">
+            <label for="term">Over what term?</label>
+            <output class="calc-field__val" id="termOut">7 years</output>
+          </div>
+          <input class="range" type="range" id="term" min="1" max="7" step="1" value="7" aria-describedby="termScale">
+          <div class="range-scale" id="termScale"><span>1 yr</span><span id="termMaxLabel">7 yrs</span></div>
+          <p class="calc-note" id="termNote">Terms of 1–7 years apply for loans up to $50,000.</p>
+        </div>
+      </div>
+
+      <!-- RESULTS -->
+      <aside class="calc-results product-card" aria-live="polite">
+        <span class="eyebrow" style="font-size:0.66rem">Indicative monthly repayment</span>
+        <div class="result-figure"><span id="monthlyOut">$524</span><span class="result-per">/ month</span></div>
+        <p class="result-sub">Principal &amp; interest, paid monthly at <strong>17.95% p.a.</strong><br><span class="result-comp">Comparison rate ≈ XX.XX% p.a. — to be confirmed</span></p>
+
+        <div class="result-rows">
+          <div class="result-row"><span class="k">Loan amount</span><span class="v" id="rAmount">$25,000</span></div>
+          <div class="result-row"><span class="k">Term</span><span class="v" id="rTerm">7 years</span></div>
+          <div class="result-row"><span class="k">Interest rate</span><span class="v">17.95% p.a.</span></div>
+          <div class="result-row"><span class="k">Total of repayments (P&amp;I)</span><span class="v" id="rTotal">$44,075</span></div>
+        </div>
+
+        <div class="result-fees">
+          <div class="result-row"><span class="k">Establishment fee <em>(one-off)</em></span><span class="v" id="rEst">$975</span></div>
+          <div class="result-row"><span class="k">Account-keeping fee <em>(monthly)</em></span><span class="v" id="rMonthlyFee">$19.50</span></div>
+        </div>
+        <p class="result-feenote">Fees are shown separately and are <strong>not</strong> included in the monthly repayment above.</p>
+
+        <a class="btn btn-primary btn-block" href="eligibility.html" style="margin-top:8px">Check your eligibility</a>
+      </aside>
+
+    </div>
+
+    <!-- IMPORTANT INFORMATION -->
+    <div class="calc-info">
+      <h2 class="info-title">Important information</h2>
+      <div class="info-grid">
+        <div class="info-item">
+          <h3>Comparison rate</h3>
+          <p>The comparison rate is <strong>≈ XX.XX% p.a.</strong> — a placeholder; the final figure is to be confirmed. For Propential it is recalculated to include the establishment and monthly account-keeping fees on a <strong>secured</strong> basis, so it sits above the 17.95% headline rate. It is <strong>not</strong> based on an unsecured personal loan.</p>
+        </div>
+        <div class="info-item">
+          <h3>Representative example</h3>
+          <p id="repExample">Borrow $25,000 over 7 years at 17.95% p.a. with a $975 establishment fee and a $19.50 monthly account-keeping fee. This comparison rate is true only for the example given. Different terms, fees or amounts may result in a different comparison rate.</p>
+        </div>
+        <div class="info-item">
+          <h3>Indicative only — not a quote</h3>
+          <p>This result is an estimate only. It is not a quote, approval, credit offer, agreement or financial advice, and any application is subject to credit assessment and our lending criteria.</p>
+        </div>
+        <div class="info-item">
+          <h3>What's in the repayment</h3>
+          <p>The monthly repayment shown is <strong>principal &amp; interest only</strong>, at 17.95% p.a. The establishment fee and monthly account-keeping fee are shown separately and are not included in that figure.</p>
+        </div>
+        <div class="info-item">
+          <h3>Your privacy</h3>
+          <p>Information you enter into this calculator is <strong>not stored</strong>. It is used only to display the figures on this page.</p>
+        </div>
+        <div class="info-item">
+          <h3>Security over your property</h3>
+          <p>A Propential loan is secured against your property — by a caveat in most states, or a second mortgage in QLD and NT. See <a href="product.html">the product</a> for full detail.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer id="site-footer"></footer>
+
+<script src="partials.js"></script>
+<script src="site.js"></script>
+<script src="calculator.js"></script>
+
+<style id="calc-styles">
+.calc-shell { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(24px, 4vw, 44px); align-items: start; }
+.calc-inputs { background: var(--olive); border: 1px solid var(--line-soft); border-radius: var(--radius-lg); padding: clamp(26px, 4vw, 40px); }
+.calc-field + .calc-field { margin-top: 38px; }
+.calc-field__top { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 22px; }
+.calc-field__top label { font-weight: 500; color: var(--text-muted); font-size: 0.875rem; }
+.calc-field__val { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.6rem, 4vw, 2.1rem); color: var(--ivory); white-space: nowrap; }
+
+/* range */
+.range { -webkit-appearance: none; appearance: none; width: 100%; height: 6px; border-radius: 999px; outline: none; cursor: pointer;
+  background: linear-gradient(90deg, var(--champagne) 0%, var(--champagne) var(--pct, 50%), rgba(243,238,226,0.14) var(--pct, 50%), rgba(243,238,226,0.14) 100%); }
+.range::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 26px; height: 26px; border-radius: 50%;
+  background: var(--gold-grad); border: 3px solid var(--ink); box-shadow: 0 4px 14px -3px rgba(214,177,94,0.7); cursor: grab; }
+.range::-webkit-slider-thumb:active { cursor: grabbing; }
+.range::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: var(--champagne); border: 3px solid var(--ink); box-shadow: 0 4px 14px -3px rgba(214,177,94,0.7); cursor: grab; }
+.range-scale { display: flex; justify-content: space-between; margin-top: 12px; font-size: 0.75rem; color: var(--text-faint); letter-spacing: 0.04em; }
+.calc-note { margin-top: 16px; font-size: 0.8rem; color: var(--text-faint); }
+
+/* results */
+.calc-results { align-self: start; }
+.result-figure { font-family: var(--font-display); font-weight: 400; color: var(--ivory); line-height: 1; margin: 10px 0 12px; display: flex; align-items: baseline; gap: 10px; }
+.result-figure #monthlyOut { font-size: clamp(3rem, 9vw, 4.2rem); letter-spacing: -0.02em; }
+.result-per { font-size: 1rem; color: var(--text-muted); font-family: var(--font-body); }
+.result-sub { font-size: 0.8rem; color: var(--text-muted); }
+.result-sub strong { color: var(--ivory); }
+.result-comp { color: var(--champagne); font-size: 0.78rem; }
+.result-rows { margin: 24px 0 0; padding: 20px 0 4px; border-top: 1px solid var(--line-soft); }
+.result-fees { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line-soft); }
+.result-row { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 7px 0; }
+.result-row .k { font-size: 0.8rem; color: var(--text-muted); }
+.result-row .k em { color: var(--text-faint); font-style: normal; }
+.result-row .v { font-size: 0.875rem; color: var(--ivory); font-weight: 500; white-space: nowrap; }
+.result-feenote { font-size: 0.76rem; color: var(--text-faint); margin: 14px 0 18px; }
+.result-feenote strong { color: var(--text-muted); }
+
+/* important info */
+.calc-info { margin-top: clamp(48px, 7vw, 80px); border-top: 1px solid var(--line); padding-top: clamp(36px, 5vw, 56px); }
+.info-title { font-size: clamp(1.5rem, 3.5vw, 2rem); margin-bottom: 32px; }
+.info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px 36px; }
+.info-item h3 { font-family: var(--font-body); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--champagne); font-weight: 600; margin-bottom: 10px; }
+.info-item p { font-size: 0.8rem; color: var(--text-faint); }
+.info-item p strong { color: var(--text-muted); }
+.info-item a { color: var(--champagne); text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 900px) { .calc-shell { grid-template-columns: 1fr; } .info-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .info-grid { grid-template-columns: 1fr; } }
+</style>
+
+</body>
+</html>

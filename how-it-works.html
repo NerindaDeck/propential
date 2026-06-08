@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en-AU" data-gold="balanced">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How it works — Propential</title>
+<meta name="description" content="How a Propential property-secured loan works: a quick eligibility check, a full application, then we assess and come back to you.">
+<link rel="icon" href="assets/propential_mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="propential.css">
+<link rel="stylesheet" href="propential-v3.css">
+</head>
+<body data-page="how">
+<a class="skip" href="#main">Skip to content</a>
+<div class="v3-bg" aria-hidden="true"></div>
+<div class="v3-progress" id="vprog" aria-hidden="true"></div>
+
+<header id="site-nav"></header>
+
+<main id="main">
+
+<section class="page-head glow-bg">
+  <div class="wrap">
+    <span class="eyebrow">How it works</span>
+    <h1>Three steps, <span class="italic-gold">start to finish.</span></h1>
+    <p class="lead">No theatre, no countdown timers. A clear path from "is this for me?" to a submitted application — and a real person assessing it at the other end.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="hiw-steps">
+      <article class="hiw-step">
+        <span class="hiw-num">01</span>
+        <div class="hiw-body">
+          <h2>Quick eligibility check</h2>
+          <p class="lead">A few questions about you and your property — how much you'd like to borrow, what the project is, and whether you're comfortable with the loan being secured against your property. You'll get an instant indication, with no impact on your credit file.</p>
+          <a class="arrow-link" href="eligibility.html">Check eligibility →</a>
+        </div>
+      </article>
+      <article class="hiw-step">
+        <span class="hiw-num">02</span>
+        <div class="hiw-body">
+          <h2>Full application</h2>
+          <p class="lead">If it's a fit, complete the rest online: your details, your property and any existing mortgage, the amount and purpose, and a snapshot of your income and expenses. It takes a few minutes, and you can add a partner or referral code if you have one.</p>
+          <a class="arrow-link" href="apply.html">Start an application →</a>
+        </div>
+      </article>
+      <article class="hiw-step">
+        <span class="hiw-num">03</span>
+        <div class="hiw-body">
+          <h2>We assess &amp; come back to you</h2>
+          <p class="lead">Our team reviews your application against our credit policy and verifies your details. We'll come back to you quickly with the outcome and next steps. If approved, we settle the loan and the funds are made available for your project.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="hiw-need">
+      <h2 class="section-title">What you'll need handy</h2>
+      <div class="grid grid-3" style="margin-top:28px">
+        <div class="feature-card"><h3>Your property details</h3><p>The address of the property the loan will be secured against, and details of any existing mortgage.</p></div>
+        <div class="feature-card"><h3>Income &amp; expenses</h3><p>A simple picture of your income and regular outgoings so we can assess affordability.</p></div>
+        <div class="feature-card"><h3>Identification</h3><p>An Australian driver licence or passport. We verify your identity securely during assessment.</p></div>
+      </div>
+    </div>
+
+    <div class="prod-cta" style="display:flex;flex-wrap:wrap;gap:14px;margin-top:64px">
+      <a class="btn btn-primary btn-lg" href="eligibility.html">Check eligibility</a>
+      <a class="btn btn-ghost btn-lg" href="calculator.html">Calculate repayments</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer id="site-footer"></footer>
+
+<script src="partials.js"></script>
+<script src="site.js"></script>
+
+<style id="hiw-styles">
+.hiw-steps { display: flex; flex-direction: column; gap: 0; }
+.hiw-step { display: grid; grid-template-columns: 120px 1fr; gap: clamp(20px, 4vw, 48px); padding: clamp(30px,5vw,46px) 0; border-bottom: 1px solid var(--line-soft); }
+.hiw-step:first-child { padding-top: 0; }
+.hiw-num { font-family: var(--font-display); font-size: clamp(3rem, 8vw, 4.6rem); color: var(--champagne); line-height: 0.9; }
+.hiw-body h2 { font-size: clamp(1.5rem, 4vw, 2.1rem); margin-bottom: 12px; }
+.hiw-body .lead { margin-top: 0; margin-bottom: 18px; }
+.hiw-need { margin-top: clamp(48px, 7vw, 80px); }
+@media (max-width: 640px) { .hiw-step { grid-template-columns: 1fr; gap: 8px; } .hiw-num { font-size: 2.6rem; } }
+</style>
+
+</body>
+</html>

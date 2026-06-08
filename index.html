@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en-AU" data-gold="balanced">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Propential — Unlock your property's true value</title>
+<meta name="description" content="A property-secured facility to fund what you want to do with the place you own. Borrow $5,000–$100,000 at one clear rate, secured against your property.">
+<link rel="icon" href="assets/propential_mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="propential.css">
+<link rel="stylesheet" href="propential-v3.css">
+</head>
+<body data-page="home-v3">
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="v3-bg" aria-hidden="true"></div>
+<div class="v3-progress" id="progress" aria-hidden="true"></div>
+
+<header id="site-nav"></header>
+
+<main id="main">
+
+<!-- ===================== HERO ===================== -->
+<section class="v3hero" id="hero" data-screen-label="Hero">
+  <div class="v3hero__bg kb" style="background-image:url('assets/v3/hero-wide.jpg')" aria-hidden="true"></div>
+  <div class="v3hero__scrim" aria-hidden="true"></div>
+  <div class="spotlight" id="spotlight" aria-hidden="true"></div>
+
+  <div class="v3hero__inner">
+    <div class="v3hero__copy">
+      <span class="tag r"><span class="dot"></span> Property-secured · fixed term</span>
+      <h1 class="v3hero__title r">Put your home's value <span class="grad-text">to work.</span></h1>
+      <p class="v3hero__sub r">A property-secured facility to fund what you want to do with the place you own — <span class="em-strong">improve it, finish it, build on it</span>. One clear rate, terms with room to move.</p>
+      <div class="v3hero__cta r">
+        <a class="btn btn-primary btn-lg btn-arrow btn-magnetic" href="eligibility.html">Check eligibility <span class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+        <a class="btn btn-ghost btn-lg btn-magnetic" href="calculator.html">Calculate repayments</a>
+      </div>
+    </div>
+
+    <aside class="dash r" aria-label="Loan summary">
+      <span class="dash__border" aria-hidden="true"></span>
+      <div class="dash__top">
+        <span class="dash__chip">FIXED-TERM · SECURED</span>
+        <span class="dash__chip">17.95% p.a.</span>
+      </div>
+      <div class="dash__field">
+        <div class="dash__frow"><span class="dash__label">Borrow</span><span class="dash__amt" id="hAmt">$25,000</span></div>
+        <input class="lc-range" type="range" id="hAmount" min="5000" max="100000" step="1000" value="25000" aria-label="Amount to borrow">
+        <div class="dash__meta"><span>$5,000</span><span>$100,000</span></div>
+      </div>
+      <div class="dash__field">
+        <div class="dash__frow"><span class="dash__label">Over</span><span class="dash__amt" id="hTermVal">7 years</span></div>
+        <input class="lc-range" type="range" id="hTerm" min="1" max="7" step="1" value="7" aria-label="Loan term">
+        <p class="dash__note" id="hNote">1–7 years for loans up to $50,000.</p>
+      </div>
+      <div class="dash__result">
+        <span class="dash__label">Indicative monthly repayment</span>
+        <div class="dash__mo"><span id="hMonthly">$525</span><span class="dash__per"> / mo</span></div>
+        <div class="dash__fees"><div><span class="k">Rate</span><span class="v">17.95%</span></div><div><span class="k">Est. fee</span><span class="v" id="hEst">$975</span></div><div><span class="k">Monthly</span><span class="v" id="hMfee">$19.50</span></div></div>
+      </div>
+      <a class="btn btn-primary btn-block btn-arrow" href="eligibility.html">Start your project <span class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <p class="dash__foot">A fixed-term, secured loan — not a line of credit. Indicative only; subject to credit assessment.</p>
+    </aside>
+  </div>
+</section>
+
+<!-- ===================== TICKER ===================== -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__track" id="tickerTrack"></div>
+</div>
+
+<!-- ===================== DOOR REVEAL ===================== -->
+<section class="v3-section door-section" data-screen-label="A home, unlocked">
+  <div class="door-aura" aria-hidden="true"></div>
+  <svg class="door-lines" viewBox="0 0 640 900" preserveAspectRatio="xMaxYMid slice" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+    <path d="M540 -40 V150 Q540 240 450 240 H250 Q160 240 160 330 V520 Q160 610 250 610 H490 Q580 610 580 700 V960"/>
+    
+    
+    
+  </svg>
+  <div class="wrap cutout-band">
+    <div class="door-scene r" id="doorScene" tabindex="0" role="button" aria-label="Open the door to reveal the interior">
+      <div class="door-frame"><div class="img" style="background-image:url('assets/v3/cutout-wide.jpg')"></div></div>
+      <div class="door-panel" style="opacity: 0.97">
+        <span class="door-handle"></span>
+        <span class="door-tag"><svg viewBox="0 0 200 210" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="tagg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ECD58C"/><stop offset="0.5" stop-color="#D6B15E"/><stop offset="1" stop-color="#B6873A"/></linearGradient></defs><path d="M34 96 L100 36 L166 96" fill="none" stroke="url(#tagg)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/><path d="M52 92 V162 Q52 174 64 174 H136 Q148 174 148 162 V92" fill="none" stroke="url(#tagg)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/><circle cx="100" cy="112" r="15" fill="url(#tagg)"/><path d="M89 121 L111 121 L115 156 L85 156 Z" fill="url(#tagg)"/></svg></span>
+        <span class="door-hint">Open ›</span>
+      </div>
+    </div>
+    <div class="cutout-copy r">
+      <span class="mono">// Open the door</span>
+      <h2 class="section-title" style="margin:16px 0 0">The value is already there. <span class="grad-text">Propential turns the key.</span></h2>
+      <p class="lead" style="margin-top:20px">The equity sitting in your home is waiting to be put to work — toward <span class="em-strong" style="color:var(--ivory)">interiors, a pool, fencing or landscaping</span>. Whatever the project, you're borrowing against what's already yours.</p>
+      <a class="btn btn-ghost btn-arrow" href="product.html" style="margin-top:24px">How the product works <span class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== BENTO ===================== -->
+<section class="v3-section has-lines" data-screen-label="Why Propential">
+  <svg class="door-lines" viewBox="0 0 640 900" preserveAspectRatio="xMaxYMid slice" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+    <path d="M540 -40 V150 Q540 240 450 240 H250 Q160 240 160 330 V520 Q160 610 250 610 H490 Q580 610 580 700 V960"/>
+    
+    
+    
+  </svg>
+  <div class="wrap">
+    <div class="v3-head r">
+      <span class="mono">// Why Propential</span>
+      <h2>Plain terms. <span class="grad-text">Real room to move.</span></h2>
+    </div>
+    <div class="bento3">
+      <div class="tile tile--gold col-3 r">
+        <span class="mono">Borrow</span>
+        <div class="num">$5k – $100k</div>
+        <p>Against the equity you've already built.</p>
+      </div>
+      <div class="tile col-3 r">
+        <span class="mono">One clear rate</span>
+        <div class="num"><span data-count="17.95" data-decimals="2">17.95</span>%</div>
+        <p>Same for everyone — not risk-priced.<sup style="color:var(--champagne)">*</sup></p>
+      </div>
+      <div class="tile col-2 r">
+        <span class="mono">Term</span>
+        <div class="num"><span data-count="10">10</span> yrs</div>
+        <p>Up to, for loans above $50k.</p>
+      </div>
+      <div class="tile col-2 r">
+        <span class="mono">Early exit</span>
+        <div class="num">$0</div>
+        <p>No early-repayment penalty, ever.</p>
+      </div>
+      <div class="tile tile--img col-2 r" style="min-height:200px">
+        <div class="img" style="background-image:url('assets/v3/bento-wide.jpg')"></div>
+        <div class="cap"><span class="mono" style="color:var(--ivory)">Secured</span><div style="font-family:var(--font-display);font-size:1.3rem;color:#fff;line-height:1.1;margin-top:4px">Against your own property</div></div>
+      </div>
+    </div>
+    <p class="mono-dim" style="margin-top:22px;max-width:80ch;text-transform:none;letter-spacing:0">*Comparison rate ≈ XX.XX% p.a. — final figure to be confirmed, with the establishment and monthly fees included on a secured basis. See the <a href="calculator.html" style="color:var(--champagne);text-decoration:underline">calculator</a>.</p>
+  </div>
+</section>
+
+<!-- ===================== HOW IT WORKS (showcase) ===================== -->
+<section class="show" data-screen-label="How it works">
+  <div class="show__bgs" aria-hidden="true"><div class="layer is-active" style="background-image:url('assets/v3/kitchen-wide.jpg')"></div></div>
+  <div class="show__scrim" aria-hidden="true"></div>
+  <div class="wrap show__inner">
+    <div class="v3-head r"><span class="mono">// How it works</span><h2 class="show__title">Three steps, <span class="grad-text">start to finish.</span></h2></div>
+    <div class="steps3b">
+      <div class="stepc r"><span class="stepc__ico"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="M8.5 13l2.2 2.2 4.3-4.4"/></svg></span><span class="stepc__n">Step 01</span><h3>Quick eligibility check</h3><p>A few questions about you and your property, with an instant indication of whether Propential is a fit — no impact on your credit file.</p><a class="btn btn-ghost" href="eligibility.html">Check eligibility</a></div>
+      <div class="stepc r"><span class="stepc__ico"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v5h5"/><path d="M14 3H6.5A1.5 1.5 0 0 0 5 4.5v15A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5V8z"/><path d="M9 13h6M9 17h4"/></svg></span><span class="stepc__n">Step 02</span><h3>Full application</h3><p>Complete it online — amount, purpose and the details we need to assess your application. Add a partner code if you have one.</p><a class="btn btn-ghost" href="apply.html">Start an application</a></div>
+      <div class="stepc r"><span class="stepc__ico"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.3 12.2l2.4 2.4 5-5"/></svg></span><span class="stepc__n">Step 03</span><h3>We assess &amp; come back</h3><p>Our team reviews your application against our credit policy and comes back to you quickly with the outcome and next steps.</p><a class="btn btn-ghost" href="faqs.html">Read the FAQs</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== COLUMN CAROUSEL ===================== -->
+<section class="v3-section" data-screen-label="What you can fund">
+  <div class="wrap car" id="car">
+    <div class="car__head">
+      <div class="v3-head r" style="margin-bottom:0">
+        <span class="mono">// What you can fund</span>
+        <h2>For the project <span class="grad-text">you have in mind.</span></h2>
+      </div>
+      <div class="car__nav">
+        <button class="car__btn" id="carPrev" type="button" aria-label="Previous"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <button class="car__btn" id="carNext" type="button" aria-label="Next"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+    <div class="car__viewport">
+    <div class="car__track" id="carTrack" tabindex="0" aria-label="Project types, use arrow keys to navigate">
+      <article class="card3"><div class="img" style="background-image:url('assets/v2/interiors.jpg')"></div><div class="body"><span class="lab">Interiors</span><h3>Finish the inside</h3><p>Kitchens, bathrooms, flooring and fit-outs that lift the whole home.</p></div></article>
+      <article class="card3"><div class="img" style="background-image:url('assets/v2/pool.jpg')"></div><div class="body"><span class="lab">Pools</span><h3>Make a splash</h3><p>Pools and surrounds that turn a backyard into a retreat.</p></div></article>
+      <article class="card3"><div class="img" style="background-image:url('assets/v2/deck.jpg')"></div><div class="body"><span class="lab">Outdoor &amp; decking</span><h3>Live outside</h3><p>Decks, terraces and fencing for the way you actually use the place.</p></div></article>
+      <article class="card3"><div class="img" style="background-image:url('assets/v2/landscaping.jpg')"></div><div class="body"><span class="lab">Landscaping</span><h3>Ground it in green</h3><p>Gardens, lawns and grounds that finish the picture.</p></div></article>
+      <article class="card3"><div class="img" style="background-image:url('assets/v2/finishes.jpg')"></div><div class="body"><span class="lab">Roofing &amp; finishes</span><h3>Built to last</h3><p>Roofing, tiling and the trades that protect your investment.</p></div></article>
+    </div>
+    </div>
+    <div class="car__foot">
+      <span class="car__count" id="carCount">01 / 05</span>
+      <div class="car__progress"><i id="carProgress"></i></div>
+      <div class="car__dots" id="carDots"></div>
+    </div>
+    <div class="car__cta"><a class="btn btn-primary btn-arrow" href="eligibility.html">Check eligibility <span class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div>
+  </div>
+</section>
+
+<!-- ===================== LIVE CALC ===================== -->
+<section class="v3-section" data-screen-label="Live calculator">
+  <div class="wrap">
+    <div class="v3-head r">
+      <span class="mono">// Repayment calculator</span>
+      <h2>Know your repayments <span class="grad-text">up front.</span></h2>
+    </div>
+    <div class="livecalc r">
+      <div>
+        <div class="lc-field">
+          <div class="lc-top"><label for="lcAmount">Amount</label><span class="val" id="lcAmountVal" style="font-size: 36px">$25,000</span></div>
+          <input class="lc-range" type="range" id="lcAmount" min="5000" max="100000" step="1000" value="25000">
+        </div>
+        <div class="lc-field">
+          <div class="lc-top"><label for="lcTerm">Term</label><span class="val" id="lcTermVal" style="font-size: 36px">7 yrs</span></div>
+          <input class="lc-range" type="range" id="lcTerm" min="1" max="7" step="1" value="7">
+        </div>
+        <p class="mono-dim" id="lcNote" style="margin-top:18px;text-transform:none;letter-spacing:0">1–7 years for loans up to $50,000.</p>
+      </div>
+      <div class="lc-out">
+        <span class="mono">Indicative monthly repayment</span>
+        <div class="big"><span id="lcMonthly" style="font-size: 80px">$525</span><span class="per"> / mo</span></div>
+        <div class="lc-fees">
+          <div><span class="k">Rate</span><span class="v">17.95% p.a.</span></div>
+          <div><span class="k">Est. fee</span><span class="v" id="lcEst">$975</span></div>
+          <div><span class="k">Monthly fee</span><span class="v" id="lcMfee">$19.50</span></div>
+        </div>
+        <p class="sub">Principal &amp; interest only — fees shown separately. Indicative only; not a quote, approval or offer. <a href="calculator.html" style="color:var(--champagne);text-decoration:underline">Full calculator →</a></p><a class="btn btn-primary btn-arrow lc-cta" href="eligibility.html">Check eligibility <span class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CLOSING ===================== -->
+<section class="v3closing" data-screen-label="Closing CTA">
+  <div class="v3closing__img" style="background-image:url('assets/v3/closing-wide.jpg')"></div>
+  <div class="v3closing__scrim"></div>
+  <div class="v3closing__glow" id="closeGlow" aria-hidden="true"></div>
+  <div class="v3closing__ring" aria-hidden="true"></div>
+  <div class="v3closing__orbit" aria-hidden="true"><span class="v3closing__spark"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0 C13 8 16 11 24 12 C16 13 13 16 12 24 C11 16 8 13 0 12 C8 11 11 8 12 0 Z" fill="#fff"/></svg></span></div>
+  <div class="v3closing__inner r">
+    <span class="mono" style="display:inline-block;margin-bottom:18px">// Unlock your property's true value</span>
+    <h2 class="display" style="font-size:clamp(2.2rem,6vw,3.8rem);color:var(--ivory)">The value is already there. <span class="grad-text">Propential turns the key.</span></h2>
+    <div class="v3hero__cta" style="justify-content:center;margin-top:28px">
+      <a class="btn btn-primary btn-lg btn-arrow btn-magnetic" href="eligibility.html">Check eligibility <span class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a class="btn btn-ghost btn-lg btn-magnetic" href="calculator.html">Calculate repayments</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer id="site-footer"></footer>
+
+<script src="partials.js"></script>
+<script src="site.js"></script>
+<script>
+(function(){
+  var RATE=0.1795;
+  function feeBand(a){ if(a<=25000)return{est:975,m:19.50}; if(a<=50000)return{est:1130,m:24.50}; if(a<=75000)return{est:1285,m:29.50}; return{est:1440,m:34.50}; }
+  function monthly(a,y){ var r=RATE/12,n=y*12; return a*r/(1-Math.pow(1+r,-n)); }
+  var money0=function(n){return '$'+Math.round(n).toLocaleString('en-AU');};
+  var money2=function(n){return '$'+n.toFixed(2);};
+  var prefersReduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var touch=('ontouchstart' in window);
+
+  document.addEventListener('DOMContentLoaded', function(){
+    /* scroll progress */
+    var prog=document.getElementById('progress');
+    if(prog){ var sp=function(){ var h=document.documentElement.scrollHeight-window.innerHeight; prog.style.width=(h>0?(window.pageYOffset/h*100):0)+'%'; }; window.addEventListener('scroll',sp,{passive:true}); sp(); }
+
+    /* hero spotlight */
+    var hero=document.getElementById('hero'), spot=document.getElementById('spotlight');
+    if(hero&&spot&&!touch){ hero.addEventListener('mousemove',function(e){ var r=hero.getBoundingClientRect(); spot.style.setProperty('--mx',(e.clientX-r.left)+'px'); spot.style.setProperty('--my',(e.clientY-r.top)+'px'); spot.style.opacity=1; }); hero.addEventListener('mouseleave',function(){ spot.style.opacity=0; }); }
+
+    /* ticker build (fills width, seamless) */
+    var tt=document.getElementById('tickerTrack');
+    if(tt){ var ws=['Interiors','Pools','Fencing','Landscaping','Roofing','Decking','Bathrooms','Kitchens','Extensions','Finishes']; var seq=ws.concat(ws,ws);
+      var html=seq.map(function(w){return '<span class="ti">'+w+'</span>';}).join('<span class="sep">\u2726</span>');
+      tt.innerHTML='<div class="ti-half">'+html+'<span class="sep">\u2726</span></div><div class="ti-half" aria-hidden="true">'+html+'<span class="sep">\u2726</span></div>'; }
+
+    /* door toggle (touch/keyboard; hover handled by CSS) */
+    var door=document.getElementById('doorScene');
+    if(door){ var dsec=door.closest('.door-section');
+      function lit(){ if(dsec) dsec.classList.toggle('door-lit', door.matches(':hover')||door.classList.contains('open')); }
+      door.addEventListener('mouseenter',function(){ if(dsec)dsec.classList.add('door-lit'); });
+      door.addEventListener('mouseleave',lit);
+      door.addEventListener('click',function(){ door.classList.toggle('open'); lit(); });
+      door.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); door.classList.toggle('open'); lit(); } });
+    }
+    function countUp(el){ var t=parseFloat(el.getAttribute('data-count')), dec=parseInt(el.getAttribute('data-decimals')||'0',10), pre=el.getAttribute('data-prefix')||'', suf=el.getAttribute('data-suffix')||'';
+      if(prefersReduce){ el.textContent=pre+t.toLocaleString('en-AU',{minimumFractionDigits:dec,maximumFractionDigits:dec})+suf; return; }
+      var s=performance.now(),d=1400; function step(n){ var p=Math.min((n-s)/d,1), e=1-Math.pow(1-p,3); el.textContent=pre+(t*e).toLocaleString('en-AU',{minimumFractionDigits:dec,maximumFractionDigits:dec})+suf; if(p<1)requestAnimationFrame(step); } requestAnimationFrame(step); }
+
+    /* reveal + stagger */
+    var reveals=document.querySelectorAll('.r');
+    reveals.forEach(function(el){ var sibs=Array.prototype.filter.call(el.parentNode.children,function(c){return c.classList.contains('r');}); el.style.transitionDelay=(sibs.indexOf(el)*0.08)+'s'; });
+    if('IntersectionObserver' in window){ var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); e.target.querySelectorAll('[data-count]').forEach(countUp); if(e.target.matches('[data-count]'))countUp(e.target); io.unobserve(e.target); } }); },{threshold:0.15,rootMargin:'0px 0px -6% 0px'}); reveals.forEach(function(el){ io.observe(el); }); }
+    else { reveals.forEach(function(el){ el.classList.add('in'); el.querySelectorAll('[data-count]').forEach(countUp); }); }
+
+    /* dashboard bar */
+    var bar=document.getElementById('dashBar'); if(bar) setTimeout(function(){ bar.style.width='100%'; },400);
+
+    /* magnetic buttons */
+    if(!touch){ document.querySelectorAll('.btn-magnetic').forEach(function(b){ b.addEventListener('mousemove',function(e){ var r=b.getBoundingClientRect(); b.style.transform='translate('+((e.clientX-r.left-r.width/2)*0.25)+'px,'+((e.clientY-r.top-r.height/2)*0.35)+'px)'; }); b.addEventListener('mouseleave',function(){ b.style.transform=''; }); }); }
+
+    /* COLUMN carousel (infinite transform coverflow) */
+    var car=document.getElementById('carTrack');
+    if(car){ var vp=car.parentElement; var realCards=Array.prototype.slice.call(car.children); var N=realCards.length;
+      realCards.forEach(function(c){ car.appendChild(c.cloneNode(true)); });
+      for(var z=realCards.length-1; z>=0; z--){ car.insertBefore(realCards[z].cloneNode(true), car.firstChild); }
+      var cards=Array.prototype.slice.call(car.children);
+      var cdW=document.getElementById('carDots'), cpv=document.getElementById('carPrev'), cnx=document.getElementById('carNext'), cpb=document.getElementById('carProgress'), cct=document.getElementById('carCount');
+      var ci=N, cpz=false, cdown=false, csx=0, ctx=0, cmoved=false, cjump=null;
+      for(var di=0; di<N; di++){ (function(d){ var b=document.createElement('button'); b.setAttribute('aria-label','Item '+(d+1)); b.addEventListener('click',function(){ go(N+d); creset(); }); if(cdW)cdW.appendChild(b); })(di); }
+      var cdots=cdW?Array.prototype.slice.call(cdW.children):[];
+      function cpad(n){return (n<10?'0':'')+n;}
+      function cctr(c){ return c.offsetLeft + c.offsetWidth/2; }
+      function real(i){ return ((i%N)+N)%N; }
+      function mark(){ cards.forEach(function(c,k){ c.classList.toggle('is-center',k===ci); }); var r=real(ci); cdots.forEach(function(d,k){ d.classList.toggle('is-active',k===r); }); if(cct)cct.textContent=cpad(r+1)+' / '+cpad(N); }
+      function applyT(anim){ cards.forEach(function(c,k){ c.classList.toggle('is-center',k===ci); }); if(!anim){ car.style.transition='none'; } ctx=vp.clientWidth/2 - cctr(cards[ci]); car.style.transform='translateX('+ctx+'px)'; if(!anim){ void car.offsetWidth; car.style.transition=''; } }
+      function go(i){ ci=i; applyT(true); mark(); clearTimeout(cjump); if(ci<N||ci>=2*N){ cjump=setTimeout(function(){ ci=N+real(ci); applyT(false); mark(); },640); } }
+      function nearestFromTx(tx){ var want=vp.clientWidth/2 - tx, b=0,m=Infinity; cards.forEach(function(c,i){ var d=Math.abs(cctr(c)-want); if(d<m){m=d;b=i;} }); return b; }
+      if(cpv)cpv.addEventListener('click',function(){ go(ci-1); creset(); }); if(cnx)cnx.addEventListener('click',function(){ go(ci+1); creset(); });
+      car.addEventListener('keydown',function(e){ if(e.key==='ArrowRight'){e.preventDefault();go(ci+1);creset();} if(e.key==='ArrowLeft'){e.preventDefault();go(ci-1);creset();} });
+      car.addEventListener('pointerdown',function(e){ cdown=true;cmoved=false;csx=e.clientX;car.classList.add('is-dragging');car.setPointerCapture(e.pointerId); });
+      car.addEventListener('pointermove',function(e){ if(!cdown)return; var dx=e.clientX-csx; if(Math.abs(dx)>4)cmoved=true; car.style.transform='translateX('+(ctx+dx)+'px)'; });
+      function cup(e){ if(!cdown)return; cdown=false; car.classList.remove('is-dragging'); var dx=(e&&e.clientX!=null)?e.clientX-csx:0; go(nearestFromTx(ctx+dx)); creset(); }
+      car.addEventListener('pointerup',cup); car.addEventListener('pointercancel',cup);
+      car.addEventListener('click',function(e){ if(cmoved){ e.preventDefault(); } },true);
+      ['pointerenter','focusin'].forEach(function(ev){ car.addEventListener(ev,function(){cpz=true;}); }); ['pointerleave','focusout'].forEach(function(ev){ car.addEventListener(ev,function(){cpz=false;}); });
+      window.addEventListener('resize', function(){ applyT(false); });
+      var CDUR=4600,clast=performance.now(),cacc=0; function creset(){ cacc=0; if(cpb)cpb.style.width='0%'; }
+      function cloop(t){ var dt=t-clast; clast=t; if(!cpz && !cdown){ cacc+=dt; if(cpb)cpb.style.width=Math.min(cacc/CDUR*100,100)+'%'; if(cacc>=CDUR){ cacc=0; go(ci+1); } } requestAnimationFrame(cloop); }
+      requestAnimationFrame(function(){ applyT(false); mark(); }); if(!prefersReduce) requestAnimationFrame(cloop);
+    }
+
+    /* SHOWCASE (expanding step cards + bg layers + auto) */
+    var showRow=document.getElementById('showRow');
+    if(showRow){ var ssec=showRow.closest('.show'); var sitems=Array.prototype.slice.call(showRow.querySelectorAll('.show__item'));
+      var slayers=Array.prototype.slice.call(ssec.querySelectorAll('.show__bgs .layer'));
+      var sdW=ssec.querySelector('.show__dots'), sct=ssec.querySelector('.show__count'), spb=ssec.querySelector('.show__progress i'); var ai=0, spz=false;
+      sitems.forEach(function(_,i){ var b=document.createElement('button'); b.setAttribute('aria-label','Step '+(i+1)); b.addEventListener('click',function(){ setShow(i); sreset(); }); if(sdW)sdW.appendChild(b); });
+      var sdots=sdW?Array.prototype.slice.call(sdW.children):[];
+      function spad(n){return (n<10?'0':'')+n;}
+      function setShow(i){ ai=(i+sitems.length)%sitems.length; sitems.forEach(function(it,ii){ it.classList.toggle('is-active',ii===ai); }); sdots.forEach(function(d,di){ d.classList.toggle('is-active',di===ai); }); if(sct)sct.textContent=spad(ai+1)+' / '+spad(sitems.length); }
+      sitems.forEach(function(it,ii){ it.addEventListener('click',function(){ setShow(ii); sreset(); }); if(!touch) it.addEventListener('mouseenter',function(){ setShow(ii); sreset(); }); });
+      var spv=document.getElementById('showPrev'), snx=document.getElementById('showNext');
+      if(spv)spv.addEventListener('click',function(){ setShow(ai-1); sreset(); }); if(snx)snx.addEventListener('click',function(){ setShow(ai+1); sreset(); });
+      ssec.addEventListener('mouseenter',function(){spz=true;}); ssec.addEventListener('mouseleave',function(){spz=false;});
+      var SD=5600,slt=performance.now(),sacc=0; function sreset(){ sacc=0; if(spb)spb.style.width='0%'; }
+      function sloop(t){ var dt=t-slt; slt=t; if(!spz){ sacc+=dt; if(spb)spb.style.width=Math.min(sacc/SD*100,100)+'%'; if(sacc>=SD){ sacc=0; setShow(ai+1); } } requestAnimationFrame(sloop); }
+      setShow(0); if(!prefersReduce) requestAnimationFrame(sloop);
+    }
+
+    /* hero combined calc */
+    var hA=document.getElementById('hAmount'), hT=document.getElementById('hTerm');
+    if(hA&&hT){ function hf(el){ el.style.setProperty('--pct',((el.value-el.min)/(el.max-el.min)*100)+'%'); }
+      try{ var hw=JSON.parse(localStorage.getItem('propential_tweaks')||'{}'); if(hw.calcAmount)hA.value=Math.min(100000,Math.max(5000,hw.calcAmount)); if(hw.calcTerm)hT.value=hw.calcTerm; }catch(e){}
+      function hu(){ var a=+hA.value, mt=a>50000?10:7; hT.max=mt; if(+hT.value>mt)hT.value=mt; var y=+hT.value, bd=feeBand(a), mo=monthly(a,y);
+        document.getElementById('hAmt').textContent=money0(a); document.getElementById('hTermVal').textContent=y+(y===1?' year':' years'); document.getElementById('hMonthly').textContent=money0(mo); document.getElementById('hEst').textContent=money0(bd.est); document.getElementById('hMfee').textContent=money2(bd.m);
+        var hn=document.getElementById('hNote'); if(hn)hn.textContent=a>50000?'Up to 10 years above $50,000.':'1\u20137 years up to $50,000.'; hf(hA); hf(hT);
+        try{ var s=JSON.parse(localStorage.getItem('propential_tweaks')||'{}'); s.calcAmount=a; s.calcTerm=y; localStorage.setItem('propential_tweaks',JSON.stringify(s)); }catch(e){} }
+      hA.addEventListener('input',hu); hT.addEventListener('input',hu); hu();
+    }
+
+    /* live calc */
+    var amt=document.getElementById('lcAmount'), term=document.getElementById('lcTerm');
+    if(amt&&term){ function fill(el){ el.style.setProperty('--pct',((el.value-el.min)/(el.max-el.min)*100)+'%'); }
+      try{ var tw=JSON.parse(localStorage.getItem('propential_tweaks')||'{}'); if(tw.calcAmount)amt.value=Math.min(100000,Math.max(5000,tw.calcAmount)); if(tw.calcTerm)term.value=tw.calcTerm; }catch(e){}
+      function upd(){ var a=+amt.value, mt=a>50000?10:7; term.max=mt; if(+term.value>mt)term.value=mt; var y=+term.value, band=feeBand(a), mo=monthly(a,y);
+        document.getElementById('lcAmountVal').textContent=money0(a); document.getElementById('lcTermVal').textContent=y+(y===1?' yr':' yrs'); document.getElementById('lcMonthly').textContent=money0(mo); document.getElementById('lcEst').textContent=money0(band.est); document.getElementById('lcMfee').textContent=money2(band.m);
+        document.getElementById('lcNote').textContent=a>50000?'Up to 10 years for loans above $50,000.':'1\u20137 years for loans up to $50,000.'; fill(amt); fill(term);
+        try{ var s=JSON.parse(localStorage.getItem('propential_tweaks')||'{}'); s.calcAmount=a; s.calcTerm=y; localStorage.setItem('propential_tweaks',JSON.stringify(s)); }catch(e){} }
+      amt.addEventListener('input',upd); term.addEventListener('input',upd); upd();
+    }
+  });
+})();
+</script>
+
+<style>
+/* range slider (live calc) */
+.lc-range { -webkit-appearance:none; appearance:none; width:100%; height:6px; border-radius:999px; outline:none; cursor:pointer;
+  background: linear-gradient(90deg, var(--champagne) 0%, var(--champagne) var(--pct,50%), rgba(243,238,226,0.14) var(--pct,50%), rgba(243,238,226,0.14) 100%); }
+.lc-range::-webkit-slider-thumb { -webkit-appearance:none; appearance:none; width:26px; height:26px; border-radius:50%;
+  background: var(--gold-grad); border:3px solid var(--bg-0); box-shadow:0 0 18px -3px var(--glow); cursor:grab; }
+.lc-range::-webkit-slider-thumb:active { cursor:grabbing; }
+.lc-range::-moz-range-thumb { width:22px; height:22px; border-radius:50%; background:var(--champagne); border:3px solid var(--bg-0); box-shadow:0 0 18px -3px var(--glow); cursor:grab; }
+</style>
+
+<template id="__bundler_thumbnail"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#0E0F0D"/><g transform="translate(30,29) scale(0.2)"><path d="M34 96 L100 36 L166 96" fill="none" stroke="#D6B15E" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/><path d="M52 92 V162 Q52 174 64 174 H136 Q148 174 148 162 V92" fill="none" stroke="#D6B15E" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/><circle cx="100" cy="112" r="15" fill="#D6B15E"/><path d="M89 121 L111 121 L115 156 L85 156 Z" fill="#D6B15E"/></g></svg></template>
+</body>
+</html>

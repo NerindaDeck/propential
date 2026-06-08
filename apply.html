@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en-AU" data-gold="balanced">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apply — Propential</title>
+<meta name="description" content="Apply for a Propential property-secured loan. Complete your application online and we'll assess it and come back to you quickly.">
+<link rel="icon" href="assets/propential_mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="propential.css">
+<link rel="stylesheet" href="propential-v3.css">
+</head>
+<body data-page="apply">
+<a class="skip" href="#main">Skip to content</a>
+<div class="v3-bg" aria-hidden="true"></div>
+<div class="v3-progress" id="vprog" aria-hidden="true"></div>
+
+<header id="site-nav"></header>
+
+<main id="main">
+
+<section class="page-head glow-bg">
+  <div class="wrap">
+    <span class="eyebrow">Apply</span>
+    <h1>Your application, <span class="italic-gold">start to finish.</span></h1>
+    <p class="lead">A few sections about you, your property and the project. Everything is captured securely. Once you submit, our team assesses your application and comes back to you quickly with next steps.</p>
+  </div>
+</section>
+
+<section class="section form-section" style="padding-top:0">
+  <div class="wrap form-wrap">
+
+    <form id="applyForm" class="form-card" novalidate>
+
+      <!-- 1. APPLICANT -->
+      <fieldset class="form-block">
+        <legend><span class="blk-eyebrow">Section 1</span>About you</legend>
+        <div class="field-grid">
+          <div class="field span-2"><label for="name">Full name</label><input class="input" id="name" name="name" type="text" autocomplete="name" required><p class="error-msg">Please enter your name.</p></div>
+          <div class="field"><label for="dob">Date of birth</label><input class="input" id="dob" name="dob" type="date" required><p class="error-msg">Please enter your date of birth.</p></div>
+          <div class="field"><label for="email">Email</label><input class="input" id="email" name="email" type="email" autocomplete="email" required><p class="error-msg">Please enter a valid email.</p></div>
+          <div class="field"><label for="phone">Phone</label><input class="input" id="phone" name="phone" type="tel" autocomplete="tel" required><p class="error-msg">Please enter your phone number.</p></div>
+          <div class="field span-2"><label for="resAddress">Residential address</label><input class="input" id="resAddress" name="resAddress" type="text" autocomplete="street-address" required><p class="error-msg">Please enter your address.</p></div>
+        </div>
+      </fieldset>
+
+      <!-- 2. PROPERTY -->
+      <fieldset class="form-block">
+        <legend><span class="blk-eyebrow">Section 2</span>Your property</legend>
+        <div class="field-grid">
+          <div class="field span-2"><label for="propAddress">Property address (the security)</label><input class="input" id="propAddress" name="propAddress" type="text" required><p class="hint">The property the loan will be secured against.</p><p class="error-msg">Please enter the property address.</p></div>
+          <div class="field"><label for="propState">State / territory</label>
+            <select class="select" id="propState" name="propState" required>
+              <option value="" disabled selected>Select</option>
+              <option>NSW</option><option>VIC</option><option>QLD</option><option>SA</option><option>WA</option><option>TAS</option><option>ACT</option><option>NT</option>
+            </select>
+            <p class="hint" id="secHint">Secured by a caveat in most states; a second mortgage in QLD &amp; NT.</p>
+            <p class="error-msg">Please select a state.</p>
+          </div>
+          <div class="field"><label for="propValue">Estimated property value</label><div class="money-input"><span class="money-sign">$</span><input class="input" id="propValue" name="propValue" type="number" min="0" step="1000" inputmode="numeric" required></div><p class="error-msg">Please enter an estimate.</p></div>
+          <div class="field span-2"><label>Is there an existing mortgage on this property?</label>
+            <div class="chip-group" role="radiogroup" aria-label="Existing mortgage">
+              <label class="chip"><input type="radio" name="hasMortgage" value="yes" required><span>Yes</span></label>
+              <label class="chip"><input type="radio" name="hasMortgage" value="no"><span>No</span></label>
+            </div>
+            <p class="error-msg">Please choose an option.</p>
+          </div>
+          <div class="field mortgage-only"><label for="lender">Existing lender</label><input class="input" id="lender" name="lender" type="text"></div>
+          <div class="field mortgage-only"><label for="mortBalance">Approx. mortgage balance</label><div class="money-input"><span class="money-sign">$</span><input class="input" id="mortBalance" name="mortBalance" type="number" min="0" step="1000" inputmode="numeric"></div></div>
+        </div>
+      </fieldset>
+
+      <!-- 3. LOAN -->
+      <fieldset class="form-block">
+        <legend><span class="blk-eyebrow">Section 3</span>Your loan</legend>
+        <div class="field-grid">
+          <div class="field"><label for="amount">Amount you'd like to borrow</label><div class="money-input"><span class="money-sign">$</span><input class="input" id="amount" name="amount" type="number" min="5000" max="100000" step="500" placeholder="25,000" inputmode="numeric" required></div><p class="hint">$5,000 – $100,000.</p><p class="error-msg" id="amountErr">Enter $5,000–$100,000.</p></div>
+          <div class="field"><label for="term">Preferred term</label>
+            <select class="select" id="term" name="term" required>
+              <option value="" disabled selected>Select a term</option>
+            </select>
+            <p class="hint" id="termHint">1–7 years up to $50k; up to 10 years above $50k.</p>
+            <p class="error-msg">Please select a term.</p>
+          </div>
+          <div class="field span-2"><label>What's the project?</label>
+            <div class="chip-group" role="radiogroup" aria-label="Project type">
+              <label class="chip"><input type="radio" name="project" value="Interiors" required><span>Interiors</span></label>
+              <label class="chip"><input type="radio" name="project" value="Pool"><span>Pool</span></label>
+              <label class="chip"><input type="radio" name="project" value="Fencing"><span>Fencing</span></label>
+              <label class="chip"><input type="radio" name="project" value="Landscaping"><span>Landscaping</span></label>
+              <label class="chip"><input type="radio" name="project" value="Roofing"><span>Roofing</span></label>
+              <label class="chip"><input type="radio" name="project" value="Other"><span>Something else</span></label>
+            </div>
+            <p class="error-msg">Please choose a project type.</p>
+          </div>
+          <div class="field span-2"><label for="purpose">Tell us a little about the project <span class="opt">(optional)</span></label><textarea class="input" id="purpose" name="purpose" rows="3"></textarea></div>
+        </div>
+      </fieldset>
+
+      <!-- 4. SERVICEABILITY -->
+      <fieldset class="form-block">
+        <legend><span class="blk-eyebrow">Section 4</span>Income &amp; expenses</legend>
+        <div class="field-grid">
+          <div class="field"><label for="employment">Employment status</label>
+            <select class="select" id="employment" name="employment" required>
+              <option value="" disabled selected>Select</option>
+              <option>Full-time</option><option>Part-time</option><option>Casual</option><option>Self-employed</option><option>Retired</option><option>Other</option>
+            </select>
+            <p class="error-msg">Please select your status.</p>
+          </div>
+          <div class="field"><label for="income">Gross annual income</label><div class="money-input"><span class="money-sign">$</span><input class="input" id="income" name="income" type="number" min="0" step="1000" inputmode="numeric" required></div><p class="error-msg">Please enter your income.</p></div>
+          <div class="field"><label for="expenses">Total monthly living expenses</label><div class="money-input"><span class="money-sign">$</span><input class="input" id="expenses" name="expenses" type="number" min="0" step="50" inputmode="numeric" required></div><p class="error-msg">Please enter your expenses.</p></div>
+          <div class="field"><label for="otherDebts">Other monthly debt repayments</label><div class="money-input"><span class="money-sign">$</span><input class="input" id="otherDebts" name="otherDebts" type="number" min="0" step="50" inputmode="numeric" required></div><p class="hint">Cards, loans, etc. Enter 0 if none.</p><p class="error-msg">Please enter an amount (0 if none).</p></div>
+        </div>
+      </fieldset>
+
+      <!-- 5. IDENTITY -->
+      <fieldset class="form-block">
+        <legend><span class="blk-eyebrow">Section 5</span>Identity</legend>
+        <div class="field-grid">
+          <div class="field"><label for="idType">ID type</label>
+            <select class="select" id="idType" name="idType" required>
+              <option value="" disabled selected>Select</option>
+              <option>Australian driver licence</option><option>Australian passport</option><option>Other government ID</option>
+            </select>
+            <p class="error-msg">Please select an ID type.</p>
+          </div>
+          <div class="field"><label for="idNumber">ID number</label><input class="input" id="idNumber" name="idNumber" type="text" required><p class="error-msg">Please enter your ID number.</p></div>
+        </div>
+        <p class="hint" style="margin-top:4px">We'll verify your identity securely as part of assessment. Don't upload documents here.</p>
+      </fieldset>
+
+      <!-- 6. REFERRAL -->
+      <fieldset class="form-block referral-block">
+        <legend><span class="blk-eyebrow">Section 6</span>Referral</legend>
+        <div class="field">
+          <label for="referral">Partner or referral code <span class="opt">(if you have one)</span></label>
+          <input class="input" id="referral" name="referral" type="text" placeholder="e.g. STYLIST-042" autocomplete="off">
+          <p class="hint">If a stylist, agent or tradesperson referred you, enter their code so they're credited.</p>
+        </div>
+      </fieldset>
+
+      <!-- 7. CONSENTS -->
+      <fieldset class="form-block">
+        <legend><span class="blk-eyebrow">Section 7</span>Consent</legend>
+        <p class="collection-statement">By submitting this application you agree that Medipay Holdings Pty Ltd (trading as Propential) may collect, use and disclose your personal and credit information to assess your application, verify your identity and manage your loan, as described in our <a href="legal/privacy.html" target="_blank">Privacy &amp; Credit Reporting Policy</a> and <a href="legal/credit-guide.html" target="_blank">Credit Guide</a>. This may include obtaining a credit report. This application is not a quote or approval and is subject to credit assessment.</p>
+        <div class="consent">
+          <input type="checkbox" id="consentPrivacy" name="consentPrivacy" required>
+          <label for="consentPrivacy">I have read and agree to the Privacy &amp; Credit Reporting Policy and consent to the collection and use of my information as described above.</label>
+        </div>
+        <div class="consent" style="margin-top:12px">
+          <input type="checkbox" id="consentAccuracy" name="consentAccuracy" required>
+          <label for="consentAccuracy">I confirm the information I've provided is true and complete to the best of my knowledge.</label>
+        </div>
+        <p class="error-msg" id="consentErr" style="margin-top:8px">Please tick both boxes to submit your application.</p>
+      </fieldset>
+
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Submit application</button>
+      <p class="form-foot">Submitting does not guarantee approval. All applications are subject to credit assessment and our lending criteria.</p>
+    </form>
+
+    <div id="applyResult" class="result-panel" hidden></div>
+
+  </div>
+</section>
+
+</main>
+
+<footer id="site-footer"></footer>
+
+<script src="partials.js"></script>
+<script src="site.js"></script>
+<script src="apply.js"></script>
+
+<style id="apply-styles">
+.form-wrap { max-width: 820px; }
+.form-block { border: 0; padding: 0; margin: 0 0 38px; }
+.form-block legend { display: flex; flex-direction: column; gap: 4px; margin-bottom: 22px; padding-bottom: 16px; border-bottom: 1px solid var(--line); width: 100%; font-family: var(--font-display); font-size: 1.4rem; color: var(--ivory); }
+.blk-eyebrow { font-family: var(--font-body); text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.68rem; color: var(--champagne); font-weight: 600; }
+.field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.field-grid .span-2 { grid-column: 1 / -1; }
+.field-grid .field { margin-bottom: 0; }
+.opt { color: var(--text-faint); font-weight: 400; }
+.collection-statement { font-size: 0.82rem; color: var(--text-faint); margin-bottom: 18px; }
+.collection-statement a { color: var(--champagne); text-decoration: underline; text-underline-offset: 3px; }
+.referral-block { background: rgba(214,177,94,0.05); border: 1px solid var(--accent-line); border-radius: var(--radius); padding: 24px; }
+.referral-block legend { border-bottom: 0; padding-bottom: 8px; margin-bottom: 10px; }
+.form-foot { font-size: 0.78rem; color: var(--text-faint); text-align: center; margin-top: 16px; }
+.mortgage-only { display: none; }
+.mortgage-only.show { display: block; }
+
+.result-panel { background: var(--olive); border: 1px solid var(--accent-line); border-radius: var(--radius-lg); padding: clamp(28px, 5vw, 56px); text-align: center; }
+.result-panel .result-mark { margin: 0 auto 22px; width: 68px; }
+.result-panel h2 { font-size: clamp(1.8rem, 5vw, 2.6rem); margin-bottom: 14px; }
+.result-panel p { color: var(--text-muted); font-size: 0.9rem; max-width: 54ch; margin: 0 auto 12px; }
+.result-ref { display: inline-block; margin: 8px 0 4px; border: 1px solid var(--line-soft); border-radius: 999px; padding: 8px 18px; font-size: 0.8rem; color: var(--text-muted); }
+.result-actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 26px; }
+@media (max-width: 560px) { .field-grid { grid-template-columns: 1fr; } }
+</style>
+
+</body>
+</html>

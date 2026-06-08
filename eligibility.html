@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en-AU" data-gold="balanced">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Check your eligibility — Propential</title>
+<meta name="description" content="A few quick questions to see whether a Propential property-secured loan is a fit. Instant indication, no obligation.">
+<link rel="icon" href="assets/propential_mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="propential.css">
+<link rel="stylesheet" href="propential-v3.css">
+</head>
+<body data-page="eligibility">
+<a class="skip" href="#main">Skip to content</a>
+<div class="v3-bg" aria-hidden="true"></div>
+<div class="v3-progress" id="vprog" aria-hidden="true"></div>
+
+<header id="site-nav"></header>
+
+<main id="main">
+
+<section class="page-head glow-bg">
+  <div class="wrap">
+    <span class="eyebrow">Check eligibility</span>
+    <h1>See if Propential <span class="italic-gold">is a fit.</span></h1>
+    <p class="lead">A few quick questions about you and your property. You'll get an instant indication — no obligation, and no impact on your credit file at this stage.</p>
+  </div>
+</section>
+
+<section class="section form-section" style="padding-top:0">
+  <div class="wrap form-wrap">
+
+    <form id="eligForm" class="form-card" novalidate>
+
+      <div class="form-step">
+        <span class="step-num">1</span>
+        <div class="field">
+          <label>Do you own — or are you buying — a property in Australia?</label>
+          <div class="chip-group" role="radiogroup" aria-label="Property ownership">
+            <label class="chip"><input type="radio" name="own" value="own" required><span>Yes, I own one</span></label>
+            <label class="chip"><input type="radio" name="own" value="buying"><span>I'm buying one</span></label>
+            <label class="chip"><input type="radio" name="own" value="no"><span>No</span></label>
+          </div>
+          <p class="error-msg">Please choose an option.</p>
+        </div>
+      </div>
+
+      <div class="form-step">
+        <span class="step-num">2</span>
+        <div class="field">
+          <label for="state">Which state or territory is the property in?</label>
+          <select class="select" id="state" name="state" required>
+            <option value="" disabled selected>Select a state or territory</option>
+            <option>NSW</option><option>VIC</option><option>QLD</option><option>SA</option>
+            <option>WA</option><option>TAS</option><option>ACT</option><option>NT</option>
+          </select>
+          <p class="hint" id="stateHint">In most states the loan is secured by a caveat. In QLD and NT it's secured by a second mortgage.</p>
+          <p class="error-msg">Please select a state or territory.</p>
+        </div>
+      </div>
+
+      <div class="form-step">
+        <span class="step-num">3</span>
+        <div class="field">
+          <label for="amount">How much would you like to borrow?</label>
+          <div class="money-input">
+            <span class="money-sign">$</span>
+            <input class="input" type="number" id="amount" name="amount" min="5000" max="100000" step="500" placeholder="25,000" inputmode="numeric" required>
+          </div>
+          <p class="hint">Between $5,000 and $100,000.</p>
+          <p class="error-msg" id="amountErr">Enter an amount between $5,000 and $100,000.</p>
+        </div>
+      </div>
+
+      <div class="form-step">
+        <span class="step-num">4</span>
+        <div class="field">
+          <label>What's the project?</label>
+          <div class="chip-group" role="radiogroup" aria-label="Project type">
+            <label class="chip"><input type="radio" name="project" value="Interiors" required><span>Interiors</span></label>
+            <label class="chip"><input type="radio" name="project" value="Pool"><span>Pool</span></label>
+            <label class="chip"><input type="radio" name="project" value="Fencing"><span>Fencing</span></label>
+            <label class="chip"><input type="radio" name="project" value="Landscaping"><span>Landscaping</span></label>
+            <label class="chip"><input type="radio" name="project" value="Roofing"><span>Roofing</span></label>
+            <label class="chip"><input type="radio" name="project" value="Other"><span>Something else</span></label>
+          </div>
+          <p class="error-msg">Please choose a project type.</p>
+        </div>
+      </div>
+
+      <div class="form-step">
+        <span class="step-num">5</span>
+        <div class="field">
+          <label>Are you comfortable with the loan being secured by a mortgage or caveat over your property?</label>
+          <div class="chip-group" role="radiogroup" aria-label="Security comfort">
+            <label class="chip"><input type="radio" name="security" value="yes" required><span>Yes</span></label>
+            <label class="chip"><input type="radio" name="security" value="unsure"><span>I'd like to know more</span></label>
+            <label class="chip"><input type="radio" name="security" value="no"><span>No</span></label>
+          </div>
+          <p class="error-msg">Please choose an option.</p>
+        </div>
+      </div>
+
+      <div class="form-step">
+        <span class="step-num">6</span>
+        <div class="field-row">
+          <div class="field">
+            <label for="name">Full name</label>
+            <input class="input" type="text" id="name" name="name" autocomplete="name" required>
+            <p class="error-msg">Please enter your name.</p>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input class="input" type="email" id="email" name="email" autocomplete="email" required>
+            <p class="error-msg">Please enter a valid email.</p>
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input class="input" type="tel" id="phone" name="phone" autocomplete="tel" required>
+            <p class="error-msg">Please enter a valid phone number.</p>
+          </div>
+        </div>
+
+        <div class="consent">
+          <input type="checkbox" id="consent" name="consent" required>
+          <label for="consent">I agree to be contacted about my enquiry and have read the <a href="legal/privacy.html" target="_blank">Privacy &amp; Credit Reporting Policy</a>. I understand the information I provide will be collected and used to assess my enquiry. This is not an application and is subject to credit assessment.</label>
+        </div>
+        <p class="error-msg" id="consentErr" style="margin-top:-6px">Please confirm your consent to continue.</p>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Get my result</button>
+      <p class="form-foot">Indicative only. Completing this check is not an application, quote or approval and does not affect your credit score.</p>
+    </form>
+
+    <!-- RESULT -->
+    <div id="result" class="result-panel" hidden></div>
+
+  </div>
+</section>
+
+</main>
+
+<footer id="site-footer"></footer>
+
+<script src="partials.js"></script>
+<script src="site.js"></script>
+<script src="eligibility.js"></script>
+
+<style id="elig-styles">
+.form-wrap { max-width: 760px; }
+.form-card { background: var(--olive); border: 1px solid var(--line-soft); border-radius: var(--radius-lg); padding: clamp(24px, 4vw, 44px); }
+.form-step { display: grid; grid-template-columns: 40px 1fr; gap: 18px; padding-bottom: 30px; margin-bottom: 30px; border-bottom: 1px solid var(--line-soft); }
+.form-step:last-of-type { border-bottom: 0; }
+.step-num { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--accent-line); color: var(--champagne); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1rem; }
+.form-step .field:last-child { margin-bottom: 0; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.field-row .field:first-child { grid-column: 1 / -1; }
+.money-input { position: relative; }
+.money-sign { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--champagne); font-weight: 600; pointer-events: none; }
+.money-input .input { padding-left: 30px; }
+.form-foot { font-size: 0.78rem; color: var(--text-faint); text-align: center; margin-top: 16px; }
+
+/* result */
+.result-panel { background: var(--olive); border: 1px solid var(--accent-line); border-radius: var(--radius-lg); padding: clamp(28px, 5vw, 52px); text-align: center; }
+.result-panel .result-mark { margin: 0 auto 22px; width: 64px; }
+.result-panel h2 { font-size: clamp(1.8rem, 5vw, 2.6rem); margin-bottom: 14px; }
+.result-panel p { color: var(--text-muted); font-size: 0.9rem; max-width: 52ch; margin: 0 auto 10px; }
+.result-summary { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 26px 0; }
+.result-summary span { border: 1px solid var(--line-soft); border-radius: 999px; padding: 8px 16px; font-size: 0.8rem; color: var(--text-muted); }
+.result-summary b { color: var(--ivory); font-weight: 600; }
+.result-actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 26px; }
+@media (max-width: 540px) { .field-row { grid-template-columns: 1fr; } .form-step { grid-template-columns: 1fr; gap: 12px; } .step-num { display: none; } }
+</style>
+
+</body>
+</html>
