@@ -26,6 +26,18 @@
     f.classList.toggle('field--error', on);
   }
 
+  // Live amount validation ($5,000–$100,000)
+  var amountEl = document.getElementById('amount');
+  function checkAmount() {
+    if (amountEl.value === '') { setError(amountEl, false); return; }
+    var amt = parseFloat(amountEl.value);
+    setError(amountEl, !(amt >= 5000 && amt <= 100000));
+  }
+  amountEl.addEventListener('blur', checkAmount);
+  amountEl.addEventListener('input', function () {
+    if ((amountEl.closest('.field') || amountEl).classList.contains('field--error')) checkAmount();
+  });
+
   function validate() {
     var ok = true;
     // radios
@@ -98,7 +110,7 @@
         '<p style="margin-top:22px;font-size:0.78rem;color:var(--text-faint)">Indicative only. Not a quote, approval or credit offer, and subject to full credit assessment.</p>';
     } else {
       var reason = data.own === 'no'
-        ? 'A Propential loan is secured against a property you own or are buying, so property ownership is needed to proceed.'
+        ? 'A Propential loan is secured against a property you own, so property ownership is needed to proceed.'
         : 'A Propential loan is secured by a mortgage or caveat over your property. If that\u2019s not something you\u2019re comfortable with, it won\u2019t be the right fit right now.';
       html +=
         '<h2>Thanks, ' + escapeHtml(data.name.split(' ')[0]) + '.</h2>' +

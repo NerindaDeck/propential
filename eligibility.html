@@ -34,10 +34,9 @@
       <div class="form-step">
         <span class="step-num">1</span>
         <div class="field">
-          <label>Do you own — or are you buying — a property in Australia?</label>
+          <label>Do you own a property in Australia?</label>
           <div class="chip-group" role="radiogroup" aria-label="Property ownership">
             <label class="chip"><input type="radio" name="own" value="own" required><span>Yes, I own one</span></label>
-            <label class="chip"><input type="radio" name="own" value="buying"><span>I'm buying one</span></label>
             <label class="chip"><input type="radio" name="own" value="no"><span>No</span></label>
           </div>
           <p class="error-msg">Please choose an option.</p>
@@ -102,29 +101,31 @@
 
       <div class="form-step">
         <span class="step-num">6</span>
-        <div class="field-row">
-          <div class="field">
-            <label for="name">Full name</label>
-            <input class="input" type="text" id="name" name="name" autocomplete="name" required>
-            <p class="error-msg">Please enter your name.</p>
+        <div class="step-body">
+          <div class="field-row">
+            <div class="field">
+              <label for="name">Full name</label>
+              <input class="input" type="text" id="name" name="name" autocomplete="name" required>
+              <p class="error-msg">Please enter your name.</p>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input class="input" type="email" id="email" name="email" autocomplete="email" required>
+              <p class="error-msg">Please enter a valid email.</p>
+            </div>
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input class="input" type="tel" id="phone" name="phone" autocomplete="tel" required>
+              <p class="error-msg">Please enter a valid phone number.</p>
+            </div>
           </div>
-          <div class="field">
-            <label for="email">Email</label>
-            <input class="input" type="email" id="email" name="email" autocomplete="email" required>
-            <p class="error-msg">Please enter a valid email.</p>
-          </div>
-          <div class="field">
-            <label for="phone">Phone</label>
-            <input class="input" type="tel" id="phone" name="phone" autocomplete="tel" required>
-            <p class="error-msg">Please enter a valid phone number.</p>
-          </div>
-        </div>
 
-        <div class="consent">
-          <input type="checkbox" id="consent" name="consent" required>
-          <label for="consent">I agree to be contacted about my enquiry and have read the <a href="legal/privacy.html" target="_blank">Privacy &amp; Credit Reporting Policy</a>. I understand the information I provide will be collected and used to assess my enquiry. This is not an application and is subject to credit assessment.</label>
+          <div class="consent">
+            <input type="checkbox" id="consent" name="consent" required>
+            <label for="consent">I agree to be contacted about my enquiry and confirm I have read the <a href="legal/privacy.html" target="_blank">Privacy &amp; Credit Reporting Policy</a>. I understand the information I provide will be collected and used to assess my enquiry. This is not an application, and any loan is subject to credit assessment.</label>
+          </div>
+          <p class="error-msg" id="consentErr">Please confirm your consent to continue.</p>
         </div>
-        <p class="error-msg" id="consentErr" style="margin-top:-6px">Please confirm your consent to continue.</p>
       </div>
 
       <button type="submit" class="btn btn-primary btn-lg btn-block">Get my result</button>
@@ -152,6 +153,8 @@
 .form-step:last-of-type { border-bottom: 0; }
 .step-num { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--accent-line); color: var(--champagne); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1rem; }
 .form-step .field:last-child { margin-bottom: 0; }
+.step-body { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+.step-body .field-row { margin-bottom: 0; }
 .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .field-row .field:first-child { grid-column: 1 / -1; }
 .money-input { position: relative; }

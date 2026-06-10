@@ -27,7 +27,6 @@
   var rTotal = document.getElementById('rTotal');
   var rEst = document.getElementById('rEst');
   var rMonthlyFee = document.getElementById('rMonthlyFee');
-  var repExample = document.getElementById('repExample');
 
   // Seed defaults from home-page Tweaks, if present
   try {
@@ -68,10 +67,6 @@
     rTotal.textContent = money0(total);
     rEst.textContent = money0(band.est);
     rMonthlyFee.textContent = money2(band.monthly);
-    repExample.textContent =
-      'Borrow ' + money0(amt) + ' over ' + yrs + (yrs === 1 ? ' year' : ' years') +
-      ' at 17.95% p.a. with a ' + money0(band.est) + ' establishment fee and a ' +
-      money2(band.monthly) + ' monthly account-keeping fee. This comparison rate is true only for the example given. Different terms, fees or amounts may result in a different comparison rate.';
 
     fillTrack(amount);
     fillTrack(term);

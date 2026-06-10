@@ -68,8 +68,8 @@
           fcol('legal/hardship.html', 'Hardship') +
         '</ul></div>' +
       '</div>' +
-      '<p class="footer__aoc">Propential acknowledges the Traditional Custodians of the lands on which we live and work, and pays respect to Elders past and present. Sovereignty was never ceded.</p>' +
-      '<p class="footer__legal">\u00A9 Medipay Holdings Pty Ltd ACN 604 221 276 trading as Propential, Australian Credit Licence Number 474336 | Suite 504, 478 George Street, Sydney NSW 2000. Any repayment figures shown are indicative only and are not a quote, approval, credit offer or financial advice. All applications are subject to credit assessment and our lending criteria.</p>' +
+      '<p class="footer__aoc">Propential acknowledges that we are on the land of the Gadigal and Birrabirragal people, the traditional custodians of the land. We pay our respects to Elders past, present and emerging.</p>' +
+      '<p class="footer__legal">\u00A9 Medipay Holdings Pty Ltd ACN 604 221 276 Australian Credit Licence Number 474336 | 264 George Street, Sydney NSW 2000. Any repayment figures shown are indicative only and are not a quote, approval, credit offer or financial advice. All applications are subject to credit assessment and our lending criteria.</p>' +
     '</div>';
 
   var navEl = document.getElementById('site-nav');

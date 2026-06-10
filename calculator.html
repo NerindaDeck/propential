@@ -56,13 +56,13 @@
       <aside class="calc-results product-card" aria-live="polite">
         <span class="eyebrow" style="font-size:0.66rem">Indicative monthly repayment</span>
         <div class="result-figure"><span id="monthlyOut">$524</span><span class="result-per">/ month</span></div>
-        <p class="result-sub">Principal &amp; interest, paid monthly at <strong>17.95% p.a.</strong><br><span class="result-comp">Comparison rate ≈ XX.XX% p.a. — to be confirmed</span></p>
+        <p class="result-sub">Principal &amp; interest, paid monthly at <strong>17.95% p.a.</strong></p>
 
         <div class="result-rows">
           <div class="result-row"><span class="k">Loan amount</span><span class="v" id="rAmount">$25,000</span></div>
           <div class="result-row"><span class="k">Term</span><span class="v" id="rTerm">7 years</span></div>
           <div class="result-row"><span class="k">Interest rate</span><span class="v">17.95% p.a.</span></div>
-          <div class="result-row"><span class="k">Total of repayments (P&amp;I)</span><span class="v" id="rTotal">$44,075</span></div>
+          <div class="result-row result-row--total"><span class="k">Total of repayments (P&amp;I) if you stay the full term — and remember, there's no cost to leave early.</span><span class="v" id="rTotal">$44,075</span></div>
         </div>
 
         <div class="result-fees">
@@ -76,33 +76,35 @@
 
     </div>
 
+    <p class="calc-leadin">Repayable over 1 to 7 years for loans between $5,000 and $50,000, and 1 to 10 years for loans between $50,001 and $100,000, with no penalties for early repayment. Please see important information about this calculator <a href="#calc-info">here</a>.</p>
+
     <!-- IMPORTANT INFORMATION -->
-    <div class="calc-info">
-      <h2 class="info-title">Important information</h2>
-      <div class="info-grid">
+    <div class="calc-info" id="calc-info">
+      <h2 class="info-title">Important information about this calculator</h2>
+      <div class="info-stack">
         <div class="info-item">
-          <h3>Comparison rate</h3>
-          <p>The comparison rate is <strong>≈ XX.XX% p.a.</strong> — a placeholder; the final figure is to be confirmed. For Propential it is recalculated to include the establishment and monthly account-keeping fees on a <strong>secured</strong> basis, so it sits above the 17.95% headline rate. It is <strong>not</strong> based on an unsecured personal loan.</p>
+          <h3>Comparison rate for Propential loans</h3>
+          <p>The comparison rate is approximately <strong>21.3% p.a.</strong>, based on a secured loan of $30,000 over a 5-year term, and includes the establishment and monthly account-keeping fees. <span class="info-flag">[Figure to be confirmed by counsel.]</span></p>
+        </div>
+        <div class="info-item">
+          <h3>Interest rate used to calculate repayments</h3>
+          <p>The interest rate used by this calculator is <strong>17.95% p.a.</strong> — a single rate that applies to every Propential loan. It is not based on a credit rating. The interest rate applicable to your loan is confirmed once you submit a completed application and we complete our credit assessment, and is subject to change.</p>
         </div>
         <div class="info-item">
           <h3>Representative example</h3>
-          <p id="repExample">Borrow $25,000 over 7 years at 17.95% p.a. with a $975 establishment fee and a $19.50 monthly account-keeping fee. This comparison rate is true only for the example given. Different terms, fees or amounts may result in a different comparison rate.</p>
+          <p>Based on a secured loan of $30,000 over 5 years at 17.95% p.a., with a one-off establishment fee of $1,130 and a monthly account-keeping fee of $24.50, a borrower can expect to pay a total of approximately $48,264. This represents a comparison rate of approximately 21.3% p.a. and includes the interest and the fees payable over the life of the loan. <strong class="info-warning">WARNING:</strong> This comparison rate is true only for the example given and may not include all fees and charges (such as government registration costs). Different terms, fees or loan amounts may result in a different comparison rate.</p>
         </div>
         <div class="info-item">
-          <h3>Indicative only — not a quote</h3>
-          <p>This result is an estimate only. It is not a quote, approval, credit offer, agreement or financial advice, and any application is subject to credit assessment and our lending criteria.</p>
+          <h3>The repayment amount</h3>
+          <p>The repayment amount shown in this calculator is the principal and interest payable. It does not include the establishment fee or the monthly account-keeping fee, which are shown separately. The repayment amount is an estimate, based on the information you provide, for illustrative purposes only, and actual amounts may vary. To find out actual repayment amounts, contact us.</p>
         </div>
         <div class="info-item">
-          <h3>What's in the repayment</h3>
-          <p>The monthly repayment shown is <strong>principal &amp; interest only</strong>, at 17.95% p.a. The establishment fee and monthly account-keeping fee are shown separately and are not included in that figure.</p>
+          <h3>The calculated repayment is not a quote, loan approval, agreement or advice</h3>
+          <p>The repayment amount generated by this calculator does not constitute a quote, loan approval, agreement or advice by Propential. It does not take into account your personal or financial circumstances. To apply for a Propential loan you must complete an application. All applications are subject to Propential's credit assessment criteria. Terms, conditions, fees and charges apply.</p>
         </div>
         <div class="info-item">
-          <h3>Your privacy</h3>
-          <p>Information you enter into this calculator is <strong>not stored</strong>. It is used only to display the figures on this page.</p>
-        </div>
-        <div class="info-item">
-          <h3>Security over your property</h3>
-          <p>A Propential loan is secured against your property — by a caveat in most states, or a second mortgage in QLD and NT. See <a href="product.html">the product</a> for full detail.</p>
+          <h3>Storage of information provided</h3>
+          <p>Propential will not store the information provided in this calculator.</p>
         </div>
       </div>
     </div>
@@ -155,13 +157,19 @@
 /* important info */
 .calc-info { margin-top: clamp(48px, 7vw, 80px); border-top: 1px solid var(--line); padding-top: clamp(36px, 5vw, 56px); }
 .info-title { font-size: clamp(1.5rem, 3.5vw, 2rem); margin-bottom: 32px; }
-.info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px 36px; }
-.info-item h3 { font-family: var(--font-body); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--champagne); font-weight: 600; margin-bottom: 10px; }
-.info-item p { font-size: 0.8rem; color: var(--text-faint); }
+.info-stack { display: grid; grid-template-columns: 1fr 1fr; gap: 30px 44px; max-width: 1000px; }
+.info-item h3 { font-family: var(--font-body); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--champagne); font-weight: 600; margin-bottom: 10px; line-height: 1.4; }
+.info-item p { font-size: 0.82rem; color: var(--text-faint); line-height: 1.65; }
+.info-flag { color: var(--text-muted); font-style: italic; }
+.info-warning { color: var(--ivory); font-weight: 600; letter-spacing: 0.04em; }
+.calc-leadin { margin-top: clamp(28px, 4vw, 44px); max-width: 80ch; font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; }
+.calc-leadin a { color: var(--champagne); text-decoration: underline; text-underline-offset: 3px; }
+.result-row--total { align-items: start; }
+.result-row--total .k { line-height: 1.5; }
 .info-item p strong { color: var(--text-muted); }
 .info-item a { color: var(--champagne); text-decoration: underline; text-underline-offset: 3px; }
-@media (max-width: 900px) { .calc-shell { grid-template-columns: 1fr; } .info-grid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 560px) { .info-grid { grid-template-columns: 1fr; } }
+@media (max-width: 900px) { .calc-shell { grid-template-columns: 1fr; } }
+@media (max-width: 700px) { .info-stack { grid-template-columns: 1fr; } }
 </style>
 
 </body>
