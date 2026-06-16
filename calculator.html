@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Repayment calculator — Propential</title>
+<title>Repayment calculator | Propential</title>
 <meta name="description" content="See an indicative monthly repayment for a Propential property-secured loan at 17.95% p.a., with establishment and account-keeping fees shown in full.">
 <link rel="icon" href="assets/propential_mark.svg" type="image/svg+xml">
 <link rel="stylesheet" href="propential.css">
@@ -19,10 +19,12 @@
 <main id="main">
 
 <section class="page-head glow-bg">
-  <div class="wrap">
-    <span class="eyebrow">Repayment calculator</span>
-    <h1>See what it costs, <span class="italic-gold">before you apply.</span></h1>
-    <p class="lead">Move the two sliders — how much you'd like to borrow, and over how long. We'll show an indicative monthly repayment at one clear rate of 17.95% p.a., with the establishment and account-keeping fees laid out in full. Nothing hidden, nothing stored.</p>
+  <div class="wrap head-split">
+    <div>
+      <span class="eyebrow">Repayment calculator</span>
+      <h1>See what it costs,<br><span class="italic-gold">before you apply.</span></h1>
+    </div>
+    <p class="lead">Move the two sliders: how much you'd like to borrow, and over how long. We'll show an indicative monthly repayment at one clear rate of 17.95% p.a., with the establishment and account-keeping fees laid out in full. Nothing hidden, nothing stored.</p>
   </div>
 </section>
 
@@ -54,15 +56,20 @@
 
       <!-- RESULTS -->
       <aside class="calc-results product-card" aria-live="polite">
-        <span class="eyebrow" style="font-size:0.66rem">Indicative monthly repayment</span>
-        <div class="result-figure"><span id="monthlyOut">$525</span><span class="result-per">/ month</span></div>
+        <span class="eyebrow" id="calcEyebrow" style="font-size:0.66rem">Indicative monthly repayment</span>
+        <div class="result-figure"><span id="monthlyOut">$525</span><span class="result-per" id="calcPer">/ month</span></div>
         <p class="result-sub">Principal &amp; interest, paid fortnightly or monthly at <strong>17.95% p.a.</strong></p>
+
+        <div class="rate-disclosure">
+          <p class="rate-disclosure__comp">Comparison rate 21.3% p.a., based on a $30,000 loan over 5 years.</p>
+          <p class="rate-disclosure__warn"><b>WARNING:</b> This comparison rate is true only for the examples given and may not include all fees and charges. Different terms, fees or other loan amounts might result in a different comparison rate.</p>
+        </div>
 
         <div class="result-rows">
           <div class="result-row"><span class="k">Loan amount</span><span class="v" id="rAmount">$25,000</span></div>
           <div class="result-row"><span class="k">Term</span><span class="v" id="rTerm">7 years</span></div>
           <div class="result-row"><span class="k">Interest rate</span><span class="v">17.95% p.a.</span></div>
-          <div class="result-row result-row--total"><span class="k">Total of repayments (P&amp;I) if you stay the full term — and remember, there's no cost to leave early.</span><span class="v" id="rTotal">$44,076</span></div>
+          <div class="result-row result-row--total"><span class="k">Total of repayments (P&amp;I) if you stay the full term, and remember, there's no cost to leave early.</span><span class="v" id="rTotal">$44,076</span></div>
         </div>
 
         <div class="result-fees">
@@ -84,11 +91,11 @@
       <div class="info-stack">
         <div class="info-item">
           <h3>Comparison rate for Propential loans</h3>
-          <p>The comparison rate is approximately <strong>21.3% p.a.</strong>, based on a secured loan of $30,000 over a 5-year term, and includes the establishment and monthly account-keeping fees. <span class="info-flag">[Figure to be confirmed by counsel.]</span></p>
+          <p>The comparison rate is approximately <strong>21.3% p.a.</strong>, based on a secured loan of $30,000 over a 5-year term, and includes the establishment and monthly account-keeping fees.</p>
         </div>
         <div class="info-item">
           <h3>Interest rate used to calculate repayments</h3>
-          <p>The interest rate used by this calculator is <strong>17.95% p.a.</strong> — a single rate that applies to every Propential loan. It is not based on a credit rating. The interest rate applicable to your loan is confirmed once you submit a completed application and we complete our credit assessment, and is subject to change.</p>
+          <p>The interest rate used by this calculator is <strong>17.95% p.a.</strong>, a single rate that applies to every Propential loan. It is not based on a credit rating. The interest rate applicable to your loan is confirmed once you submit a completed application and we complete our credit assessment, and is subject to change.</p>
         </div>
         <div class="info-item">
           <h3>Representative example</h3>
@@ -157,12 +164,12 @@
 /* important info */
 .calc-info { margin-top: clamp(48px, 7vw, 80px); border-top: 1px solid var(--line); padding-top: clamp(36px, 5vw, 56px); }
 .info-title { font-size: clamp(1.5rem, 3.5vw, 2rem); margin-bottom: 32px; }
-.info-stack { display: grid; grid-template-columns: 1fr 1fr; gap: 30px 44px; max-width: 1000px; }
+.info-stack { display: grid; grid-template-columns: 1fr 1fr; gap: 30px 44px; max-width: none; }
 .info-item h3 { font-family: var(--font-body); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--champagne); font-weight: 600; margin-bottom: 10px; line-height: 1.4; }
 .info-item p { font-size: 0.82rem; color: var(--text-faint); line-height: 1.65; }
 .info-flag { color: var(--text-muted); font-style: italic; }
 .info-warning { color: var(--ivory); font-weight: 600; letter-spacing: 0.04em; }
-.calc-leadin { margin-top: clamp(28px, 4vw, 44px); max-width: 80ch; font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; }
+.calc-leadin { margin-top: clamp(28px, 4vw, 44px); max-width: none; font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; }
 .calc-leadin a { color: var(--champagne); text-decoration: underline; text-underline-offset: 3px; }
 .result-row--total { align-items: start; }
 .result-row--total .k { line-height: 1.5; }

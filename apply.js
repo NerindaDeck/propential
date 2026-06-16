@@ -1,4 +1,4 @@
-/* Propential — application form */
+/* Propential - application form */
 (function () {
   var form = document.getElementById('applyForm');
   var result = document.getElementById('applyResult');
@@ -6,6 +6,10 @@
   var term = document.getElementById('term');
   var propState = document.getElementById('propState');
   var secHint = document.getElementById('secHint');
+  var idType = document.getElementById('idType');
+  var idIssuedState = document.getElementById('idIssuedState');
+  var idNumber = document.getElementById('idNumber');
+  var idNumberHint = document.getElementById('idNumberHint');
 
   // Prefill referral code from URL (?ref= or ?partner=)
   try {
@@ -24,8 +28,10 @@
       if (elig.amount) amount.value = elig.amount;
       if (elig.state) propState.value = elig.state;
       if (elig.project) {
-        var p = form.querySelector('input[name="project"][value="' + elig.project + '"]');
-        if (p) { p.checked = true; p.closest('.chip').classList.add('is-checked'); }
+        String(elig.project).split(',').forEach(function (val) {
+          var p = form.querySelector('input[name="project"][value="' + val.trim() + '"]');
+          if (p) { p.checked = true; var chip = p.closest('.chip'); if (chip) chip.classList.add('is-checked'); }
+        });
       }
     }
   } catch (e) {}
@@ -51,13 +57,13 @@
   rebuildTerms();
 
   form.addEventListener('change', function (e) {
-    if (e.target.type === 'radio') {
+    if ((e.target.type === 'radio' || e.target.type === 'checkbox') && e.target.closest('.chip')) {
       form.querySelectorAll('input[name="' + e.target.name + '"]').forEach(function (r) {
-        r.closest('.chip').classList.toggle('is-checked', r.checked);
+        var chip = r.closest('.chip'); if (chip) chip.classList.toggle('is-checked', r.checked);
       });
       if (e.target.name === 'hasMortgage') {
         var show = e.target.value === 'yes';
-        document.querySelectorAll('.mortgage-only').forEach(function (el) { el.classList.toggle('show', show); });
+        document.querySelectorAll('.mortgage-only').forEach(function (el) { el.classList.toggle('is-shown', show); });
       }
     }
     if (e.target === propState) {
@@ -70,17 +76,62 @@
 
   function setError(el, on) { (el.closest('.field') || el).classList.toggle('field--error', on); }
 
+  // Dynamic ID-number format by ID type + issuing state
+  var ID_DL = {
+    NSW: { re: /^\d{6,8}$/, ex: '6\u20138 digits' },
+    VIC: { re: /^\d{7,9}$/, ex: '7\u20139 digits' },
+    QLD: { re: /^[A-Za-z0-9]{6,9}$/, ex: '6\u20139 letters/numbers' },
+    WA:  { re: /^\d{6,7}[A-Za-z]?$/, ex: '6\u20137 digits, optional trailing letter' },
+    SA:  { re: /^\d{6,8}$/, ex: '6\u20138 digits' },
+    TAS: { re: /^\d{6,8}$/, ex: '6\u20138 digits' },
+    ACT: { re: /^\d{6,7}$/, ex: '6\u20137 digits' },
+    NT:  { re: /^\d{6,7}$/, ex: '6\u20137 digits' }
+  };
+  function idRule() {
+    var type = idType ? idType.value : '', st = idIssuedState ? idIssuedState.value : '';
+    if (type === 'Australian passport') return { re: /^[A-Za-z]\d{7}$/, hint: '8 characters: one letter then 7 digits (e.g. A1234567).', ph: 'A1234567' };
+    if (type === 'Australian driver licence') {
+      if (st && ID_DL[st]) return { re: ID_DL[st].re, hint: st + ' licence: ' + ID_DL[st].ex + '.', ph: '' };
+      return { re: null, hint: 'Select the issuing state to validate your licence number.', ph: '' };
+    }
+    if (type === 'Other government ID') return { re: /^[A-Za-z0-9]{3,}$/, hint: 'At least 3 characters.', ph: '' };
+    return { re: null, hint: "Select your ID type and issuing state and we'll show the expected format.", ph: '' };
+  }
+  function checkIdNumber() {
+    if (!idNumber) return true;
+    var r = idRule();
+    var v = idNumber.value.trim().replace(/\s+/g, '');
+    var bad = !v || (r.re ? !r.re.test(v) : v.length < 3);
+    setError(idNumber, bad);
+    return !bad;
+  }
+  function refreshIdNumber() {
+    if (!idNumber) return;
+    var r = idRule();
+    if (idNumberHint) idNumberHint.textContent = r.hint;
+    idNumber.placeholder = r.ph || '';
+    if ((idNumber.closest('.field') || idNumber).classList.contains('field--error')) checkIdNumber();
+  }
+  if (idType) idType.addEventListener('change', refreshIdNumber);
+  if (idIssuedState) idIssuedState.addEventListener('change', refreshIdNumber);
+  if (idNumber) {
+    idNumber.addEventListener('blur', checkIdNumber);
+    idNumber.addEventListener('input', function () { if ((idNumber.closest('.field') || idNumber).classList.contains('field--error')) checkIdNumber(); });
+  }
+  refreshIdNumber();
+
   function validate() {
     var ok = true;
-    var requiredText = ['name', 'dob', 'email', 'phone', 'resAddress', 'propAddress', 'propValue', 'income', 'expenses', 'otherDebts', 'idNumber'];
+    var requiredText = ['name', 'dob', 'email', 'phone', 'resAddress', 'propAddress', 'propValue', 'income', 'expenses', 'otherDebts'];
     requiredText.forEach(function (id) {
       var el = document.getElementById(id);
       var bad = !el.value.trim();
       if (id === 'email') bad = bad || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(el.value);
       setError(el, bad); if (bad) ok = false;
     });
-    var selects = ['propState', 'term', 'employment', 'idType'];
+    var selects = ['propState', 'term', 'employment', 'idType', 'idIssuedState'];
     selects.forEach(function (id) { var el = document.getElementById(id); setError(el, !el.value); if (!el.value) ok = false; });
+    if (!checkIdNumber()) ok = false;
     // amount range
     var amt = parseFloat(amount.value);
     var amtBad = !(amt >= 5000 && amt <= 100000);
@@ -116,10 +167,19 @@
 
     result.innerHTML = MARK +
       '<h2>Application received, ' + escapeHtml(name.split(' ')[0]) + '.</h2>' +
-      '<p>Thanks for applying with Propential. Our team will review your application against our credit policy and come back to you quickly with next steps — usually by email or phone.</p>' +
-      (ref ? '<div class="result-ref">Referral code applied: <b>' + escapeHtml(ref) + '</b></div>' : '') +
-      '<p style="margin-top:14px;font-size:0.78rem;color:var(--text-faint)">This confirmation is not an approval or credit offer. Your application is subject to credit assessment and our lending criteria.</p>' +
-      '<div class="result-actions"><a class="btn btn-primary btn-lg" href="index.html">Back to home</a></div>';
+      '<p style="max-width:none">Thanks for applying with Propential. Our team will review your application against our credit policy and come back to you quickly with next steps, usually by email or phone.</p>' +
+      (ref ? '<div class="result-ref">Referral code applied: <b style="color:rgb(214, 177, 94)">' + escapeHtml(ref) + '</b></div>' : '') +
+      '<p style="margin-top:14px;font-size:0.78rem;color:var(--text-faint);max-width:none">This confirmation is not an approval or credit offer.<br>Your application is subject to credit assessment and our lending criteria.</p>' +
+      '<div class="result-actions"><a class="btn btn-primary btn-lg" href="index.html">Back to home</a></div>' +
+      '<div class="appsteps" aria-label="Application progress">' +
+        '<div class="apptrack">' +
+          '<div class="appstep appstep--done"><span class="appstep__node">\u2713</span><span class="appstep__label">Application Received</span></div>' +
+          '<div class="appstep appstep--current"><span class="appstep__node">2</span><span class="appstep__label">Application Under Review</span></div>' +
+          '<div class="appstep appstep--todo"><span class="appstep__node">3</span><span class="appstep__label">Conditional Approval<sup>^</sup> within minutes</span></div>' +
+          '<div class="appstep appstep--todo"><span class="appstep__node">4</span><span class="appstep__label">Full Approval</span></div>' +
+        '</div>' +
+        '<p class="appsteps__foot" style="font-size:12px;color:rgb(111, 108, 99);max-width:none"><sup>^</sup> Conditional approval subject to suitability and receiving all required information during normal NSW business hours. Final approval subject to our lending criteria and supplying satisfactory supporting documents.</p>' +
+      '</div>';
 
     try { localStorage.removeItem('propential_elig'); } catch (er) {}
     form.hidden = true;

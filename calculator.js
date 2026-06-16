@@ -8,8 +8,10 @@
     if (amount <= 75000) return { est: 1285, monthly: 29.50 };
     return { est: 1440, monthly: 34.50 };
   }
-  function monthlyRepayment(amount, years) {
-    var r = RATE / 12, n = years * 12;
+  var freq = 'monthly'; // 'monthly' | 'fortnightly'
+  function periodsPerYear() { return freq === 'fortnightly' ? 26 : 12; }
+  function repayment(amount, years) {
+    var ppy = periodsPerYear(), r = RATE / ppy, n = years * ppy;
     return amount * r / (1 - Math.pow(1 + r, -n));
   }
   var money0 = function (n) { return '$' + Math.round(n).toLocaleString('en-AU'); };
@@ -22,6 +24,9 @@
   var termMaxLabel = document.getElementById('termMaxLabel');
   var termNote = document.getElementById('termNote');
   var monthlyOut = document.getElementById('monthlyOut');
+  var calcEyebrow = document.getElementById('calcEyebrow');
+  var calcPer = document.getElementById('calcPer');
+  var freqOpts = document.querySelectorAll('#calc-freq .freq-opt');
   var rAmount = document.getElementById('rAmount');
   var rTerm = document.getElementById('rTerm');
   var rTotal = document.getElementById('rTotal');
@@ -56,12 +61,15 @@
     var amt = +amount.value;
     var yrs = +term.value;
     var band = feeBand(amt);
-    var mo = monthlyRepayment(amt, yrs);
-    var total = mo * yrs * 12;
+    var ppy = periodsPerYear();
+    var pay = repayment(amt, yrs);
+    var total = pay * yrs * ppy;
 
     amountOut.textContent = money0(amt);
     termOut.textContent = yrs + (yrs === 1 ? ' year' : ' years');
-    monthlyOut.textContent = money0(mo);
+    monthlyOut.textContent = money0(pay);
+    if (calcEyebrow) calcEyebrow.textContent = 'Indicative ' + (freq === 'fortnightly' ? 'fortnightly' : 'monthly') + ' repayment';
+    if (calcPer) calcPer.textContent = freq === 'fortnightly' ? '/ fortnight' : '/ month';
     rAmount.textContent = money0(amt);
     rTerm.textContent = yrs + (yrs === 1 ? ' year' : ' years');
     rTotal.textContent = money0(total);
@@ -74,12 +82,22 @@
     // Persist for cross-page consistency
     try {
       var saved = JSON.parse(localStorage.getItem('propential_tweaks') || '{}');
-      saved.calcAmount = amt; saved.calcTerm = yrs;
+      saved.calcAmount = amt; saved.calcTerm = yrs; saved.calcFreq = freq;
       localStorage.setItem('propential_tweaks', JSON.stringify(saved));
     } catch (e) {}
   }
 
   amount.addEventListener('input', update);
   term.addEventListener('input', update);
+  if (freqOpts.length) {
+    Array.prototype.forEach.call(freqOpts, function (btn) {
+      btn.classList.toggle('is-active', btn.getAttribute('data-freq') === freq);
+      btn.addEventListener('click', function () {
+        freq = btn.getAttribute('data-freq');
+        Array.prototype.forEach.call(freqOpts, function (b) { b.classList.toggle('is-active', b === btn); });
+        update();
+      });
+    });
+  }
   update();
 })();

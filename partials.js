@@ -1,4 +1,4 @@
-/* Propential — shared nav + footer injected into every interior page.
+/* Propential - shared nav + footer injected into every interior page.
    Keeps chrome consistent across pages. Set the active link with
    <body data-page="calculator"> and the path depth with
    <body data-base="../"> for pages in a subfolder. */

@@ -1,4 +1,4 @@
-/* Propential Home v2 — carousel, reveal, floating nav */
+/* Propential Home v2 - carousel, reveal, floating nav */
 (function () {
   document.addEventListener('DOMContentLoaded', function () {
 

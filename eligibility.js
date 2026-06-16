@@ -1,4 +1,4 @@
-/* Propential — eligibility check (client-side validation + instant result) */
+/* Propential - eligibility check (client-side validation + instant result) */
 (function () {
   var form = document.getElementById('eligForm');
   var result = document.getElementById('result');
@@ -8,9 +8,9 @@
 
   // Live chip checked styling
   form.addEventListener('change', function (e) {
-    if (e.target.type === 'radio') {
+    if ((e.target.type === 'radio' || e.target.type === 'checkbox') && e.target.closest('.chip')) {
       form.querySelectorAll('input[name="' + e.target.name + '"]').forEach(function (r) {
-        r.closest('.chip').classList.toggle('is-checked', r.checked);
+        var chip = r.closest('.chip'); if (chip) chip.classList.toggle('is-checked', r.checked);
       });
     }
     if (e.target === state) {
@@ -78,7 +78,7 @@
       own: form.own.value,
       state: state.value,
       amount: parseFloat(document.getElementById('amount').value),
-      project: form.project.value,
+      project: Array.prototype.map.call(form.querySelectorAll('input[name="project"]:checked'), function (c) { return c.value; }).join(', '),
       security: form.security.value,
       name: document.getElementById('name').value.trim(),
       email: document.getElementById('email').value.trim(),
@@ -97,7 +97,7 @@
     if (eligible) {
       html +=
         '<h2>Good news, ' + escapeHtml(data.name.split(' ')[0]) + '.</h2>' +
-        '<p>Based on your answers, a Propential property-secured loan looks like a fit. The next step is a full application — it takes a few minutes and we\u2019ll come back to you quickly.</p>' +
+        '<p style="color:var(--ivory)">Based on your answers, a Propential property-secured loan looks like a fit. The next step is a full application. It takes a few minutes and we\u2019ll come back to you quickly.</p>' +
         '<div class="result-summary">' +
           '<span>Borrowing <b>' + money0(data.amount) + '</b></span>' +
           '<span>Project: <b>' + escapeHtml(data.project) + '</b></span>' +

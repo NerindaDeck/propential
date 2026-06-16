@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Check your eligibility — Propential</title>
+<title>Check your eligibility | Propential</title>
 <meta name="description" content="A few quick questions to see whether a Propential property-secured loan is a fit. Instant indication, no obligation.">
 <link rel="icon" href="assets/propential_mark.svg" type="image/svg+xml">
 <link rel="stylesheet" href="propential.css">
@@ -19,10 +19,12 @@
 <main id="main">
 
 <section class="page-head glow-bg">
-  <div class="wrap">
-    <span class="eyebrow">Check eligibility</span>
-    <h1>See if Propential <span class="italic-gold">is a fit.</span></h1>
-    <p class="lead">A few quick questions about you and your property. You'll get an instant indication — no obligation, and no impact on your credit file at this stage.</p>
+  <div class="wrap head-split">
+    <div>
+      <span class="eyebrow">Check eligibility</span>
+      <h1>See if Propential<br><span class="italic-gold">is a fit.</span></h1>
+    </div>
+    <p class="lead">6 quick questions about you and your property. You'll get instant feedback on eligibility, with no obligation, and no impact on your credit file at this stage.</p>
   </div>
 </section>
 
@@ -73,16 +75,16 @@
       <div class="form-step">
         <span class="step-num">4</span>
         <div class="field">
-          <label>What's the project?</label>
-          <div class="chip-group" role="radiogroup" aria-label="Project type">
-            <label class="chip"><input type="radio" name="project" value="Interiors" required><span>Interiors</span></label>
-            <label class="chip"><input type="radio" name="project" value="Pool"><span>Pool</span></label>
-            <label class="chip"><input type="radio" name="project" value="Fencing"><span>Fencing</span></label>
-            <label class="chip"><input type="radio" name="project" value="Landscaping"><span>Landscaping</span></label>
-            <label class="chip"><input type="radio" name="project" value="Roofing"><span>Roofing</span></label>
-            <label class="chip"><input type="radio" name="project" value="Other"><span>Something else</span></label>
+          <label>What's the project? <span style="color:var(--text-faint);font-weight:400">(select all that apply)</span></label>
+          <div class="chip-group" role="group" aria-label="Project type">
+            <label class="chip"><input type="checkbox" name="project" value="Interiors"><span>Interiors</span></label>
+            <label class="chip"><input type="checkbox" name="project" value="Pool"><span>Pool</span></label>
+            <label class="chip"><input type="checkbox" name="project" value="Fencing"><span>Fencing</span></label>
+            <label class="chip"><input type="checkbox" name="project" value="Landscaping"><span>Landscaping</span></label>
+            <label class="chip"><input type="checkbox" name="project" value="Roofing"><span>Roofing</span></label>
+            <label class="chip"><input type="checkbox" name="project" value="Other"><span>Something else</span></label>
           </div>
-          <p class="error-msg">Please choose a project type.</p>
+          <p class="error-msg">Please choose at least one.</p>
         </div>
       </div>
 

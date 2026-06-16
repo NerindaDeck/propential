@@ -309,6 +309,13 @@ body.menu-open .nav__toggle span::after { top:0; transform: rotate(-45deg); }
 .chip:hover { border-color: var(--accent-line); color: var(--ivory); }
 .chip.is-checked { border-color: var(--champagne); color: var(--ink); background: var(--gold-grad); }
 
+/* repayment frequency toggle */
+.freq-toggle { display: inline-flex; gap: 3px; padding: 3px; border-radius: 999px; background: rgba(243,238,226,0.05); border: 1px solid var(--line-soft); }
+.freq-opt { appearance: none; -webkit-appearance: none; border: 0; cursor: pointer; background: transparent; color: var(--text-muted); font-family: inherit; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.03em; padding: 7px 15px; border-radius: 999px; transition: .18s ease; white-space: nowrap; line-height: 1; }
+.freq-opt:hover { color: var(--ivory); }
+.freq-opt.is-active { background: var(--gold-grad); color: var(--ink); box-shadow: 0 0 14px -4px var(--glow); }
+.freq-toggle--sm .freq-opt { font-size: 0.64rem; padding: 6px 13px; }
+
 /* consent / checkbox */
 .consent { display: flex; gap: 13px; align-items: flex-start; padding: 18px; border: 1px solid var(--line-soft); border-radius: 14px; background: rgba(243,238,226,0.02); }
 .consent input[type="checkbox"] { width: 22px; height: 22px; accent-color: var(--champagne); margin-top: 2px; flex-shrink: 0; }
