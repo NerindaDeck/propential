@@ -134,7 +134,7 @@
     if (!checkIdNumber()) ok = false;
     // amount range
     var amt = parseFloat(amount.value);
-    var amtBad = !(amt >= 5000 && amt <= 100000);
+    var amtBad = !(amt >= 5000 && amt <= 175000);
     setError(amount, amtBad); if (amtBad) ok = false;
     // radios
     ['hasMortgage', 'project'].forEach(function (name) {

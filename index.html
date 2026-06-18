@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Propential | Unlock your property's true value</title>
-<meta name="description" content="A property-secured loan to fund what you want to do with the place you own. Borrow $5,000–$100,000 at one clear rate, secured against your property.">
+<meta name="description" content="A property-secured loan to fund what you want to do with the place you own. Borrow $5,000–$175,000 at one clear rate, secured against your property.">
 <link rel="icon" href="assets/propential_mark.svg" type="image/svg+xml">
 <link rel="stylesheet" href="propential.css">
 <link rel="stylesheet" href="propential-v3.css">
@@ -45,8 +45,8 @@
       </div>
       <div class="dash__field">
         <div class="dash__frow"><span class="dash__label">Borrow</span><span class="dash__amt" id="hAmt">$25,000</span></div>
-        <input class="lc-range" type="range" id="hAmount" min="5000" max="100000" step="1000" value="25000" aria-label="Amount to borrow">
-        <div class="dash__meta"><span>$5,000</span><span>$100,000</span></div>
+        <input class="lc-range" type="range" id="hAmount" min="5000" max="175000" step="1000" value="25000" aria-label="Amount to borrow">
+        <div class="dash__meta"><span>$5,000</span><span>$175,000</span></div>
       </div>
       <div class="dash__field">
         <div class="dash__frow"><span class="dash__label">Over</span><span class="dash__amt" id="hTermVal">7 years</span></div>
@@ -116,7 +116,7 @@
     <div class="bento3">
       <div class="tile tile--gold col-3 r">
         <span class="mono">Borrow</span>
-        <div class="num">$5k – $100k</div>
+        <div class="num">$5k – $175k</div>
       </div>
       <div class="tile col-3 r">
         <span class="mono">One clear rate</span>
@@ -202,7 +202,7 @@
       <div>
         <div class="lc-field">
           <div class="lc-top"><label for="lcAmount">Amount</label><span class="val" id="lcAmountVal" style="font-size: 36px">$25,000</span></div>
-          <input class="lc-range" type="range" id="lcAmount" min="5000" max="100000" step="1000" value="25000">
+          <input class="lc-range" type="range" id="lcAmount" min="5000" max="175000" step="1000" value="25000">
         </div>
         <div class="lc-field">
           <div class="lc-top"><label for="lcTerm">Term</label><span class="val" id="lcTermVal" style="font-size: 36px">7 yrs</span></div>
@@ -255,7 +255,7 @@
 <script>
 (function(){
   var RATE=0.1795;
-  function feeBand(a){ if(a<=25000)return{est:975,m:19.50}; if(a<=50000)return{est:1130,m:24.50}; if(a<=75000)return{est:1285,m:29.50}; return{est:1440,m:34.50}; }
+  function feeBand(a){ if(a<=25000)return{est:975,m:19.50}; if(a<=50000)return{est:1130,m:24.50}; if(a<=75000)return{est:1285,m:29.50}; if(a<=100000)return{est:1440,m:34.50}; if(a<=125000)return{est:1595,m:39.50}; if(a<=150000)return{est:1750,m:44.50}; return{est:1905,m:49.50}; }
   function ppy(){ return 12; }
   function repay(a,y){ var p=ppy(),r=RATE/p,n=y*p; return a*r/(1-Math.pow(1+r,-n)); }
   function perLabel(){ return ' / mo'; }
@@ -360,7 +360,7 @@
     /* hero combined calc */
     var hA=document.getElementById('hAmount'), hT=document.getElementById('hTerm');
     if(hA&&hT){ function hf(el){ el.style.setProperty('--pct',((el.value-el.min)/(el.max-el.min)*100)+'%'); }
-      try{ var hw=JSON.parse(localStorage.getItem('propential_tweaks')||'{}'); if(hw.calcAmount)hA.value=Math.min(100000,Math.max(5000,hw.calcAmount)); if(hw.calcTerm)hT.value=hw.calcTerm; }catch(e){}
+      try{ var hw=JSON.parse(localStorage.getItem('propential_tweaks')||'{}'); if(hw.calcAmount)hA.value=Math.min(175000,Math.max(5000,hw.calcAmount)); if(hw.calcTerm)hT.value=hw.calcTerm; }catch(e){}
       function hu(){ var a=+hA.value, mt=a>50000?10:7; hT.max=mt; if(+hT.value>mt)hT.value=mt; var y=+hT.value, bd=feeBand(a), mo=repay(a,y);
         document.getElementById('hAmt').textContent=money0(a); document.getElementById('hTermVal').textContent=y+(y===1?' year':' years'); document.getElementById('hMonthly').textContent=money0(mo); document.getElementById('hEst').textContent=money0(bd.est); document.getElementById('hMfee').textContent=money2(bd.m); document.getElementById('hPer').textContent=perLabel(); document.getElementById('hFreqLabel').textContent=freqEyebrow();
         var hn=document.getElementById('hNote'); if(hn)hn.textContent=a>50000?'Up to 10 years above $50,000.':'1\u20137 years up to $50,000.'; hf(hA); hf(hT);
@@ -371,7 +371,7 @@
     /* live calc */
     var amt=document.getElementById('lcAmount'), term=document.getElementById('lcTerm');
     if(amt&&term){ function fill(el){ el.style.setProperty('--pct',((el.value-el.min)/(el.max-el.min)*100)+'%'); }
-      try{ var tw=JSON.parse(localStorage.getItem('propential_tweaks')||'{}'); if(tw.calcAmount)amt.value=Math.min(100000,Math.max(5000,tw.calcAmount)); if(tw.calcTerm)term.value=tw.calcTerm; }catch(e){}
+      try{ var tw=JSON.parse(localStorage.getItem('propential_tweaks')||'{}'); if(tw.calcAmount)amt.value=Math.min(175000,Math.max(5000,tw.calcAmount)); if(tw.calcTerm)term.value=tw.calcTerm; }catch(e){}
       function upd(){ var a=+amt.value, mt=a>50000?10:7; term.max=mt; if(+term.value>mt)term.value=mt; var y=+term.value, band=feeBand(a), mo=repay(a,y);
         document.getElementById('lcAmountVal').textContent=money0(a); document.getElementById('lcTermVal').textContent=y+(y===1?' yr':' yrs'); document.getElementById('lcMonthly').textContent=money0(mo); document.getElementById('lcEst').textContent=money0(band.est); document.getElementById('lcMfee').textContent=money2(band.m); document.getElementById('lcPer').textContent=perLabel(); document.getElementById('lcFreqLabel').textContent=freqEyebrow();
         document.getElementById('lcNote').textContent=a>50000?'Up to 10 years for loans above $50,000.':'1\u20137 years for loans up to $50,000.'; fill(amt); fill(term);

@@ -6,7 +6,10 @@
     if (amount <= 25000) return { est: 975, monthly: 19.50 };
     if (amount <= 50000) return { est: 1130, monthly: 24.50 };
     if (amount <= 75000) return { est: 1285, monthly: 29.50 };
-    return { est: 1440, monthly: 34.50 };
+    if (amount <= 100000) return { est: 1440, monthly: 34.50 };
+    if (amount <= 125000) return { est: 1595, monthly: 39.50 };
+    if (amount <= 150000) return { est: 1750, monthly: 44.50 };
+    return { est: 1905, monthly: 49.50 };
   }
   function periodsPerYear() { return 12; } // monthly only
   function repayment(amount, years) {
@@ -34,7 +37,7 @@
   // Seed defaults from home-page Tweaks, if present
   try {
     var t = JSON.parse(localStorage.getItem('propential_tweaks') || '{}');
-    if (t.calcAmount) amount.value = Math.min(100000, Math.max(5000, t.calcAmount));
+    if (t.calcAmount) amount.value = Math.min(175000, Math.max(5000, t.calcAmount));
     if (t.calcTerm) term.value = t.calcTerm;
   } catch (e) {}
 
@@ -50,7 +53,7 @@
     termMaxLabel.textContent = maxTerm + ' yrs';
     if (+term.value > maxTerm) term.value = maxTerm;
     termNote.textContent = amt > 50000
-      ? 'Terms of up to 10 years apply for loans from $50,001 to $100,000.'
+      ? 'Terms of up to 10 years apply for loans from $50,001 to $175,000.'
       : 'Terms of 1–7 years apply for loans up to $50,000.';
   }
 

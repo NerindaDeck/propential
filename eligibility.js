@@ -26,12 +26,12 @@
     f.classList.toggle('field--error', on);
   }
 
-  // Live amount validation ($5,000–$100,000)
+  // Live amount validation ($5,000–$175,000)
   var amountEl = document.getElementById('amount');
   function checkAmount() {
     if (amountEl.value === '') { setError(amountEl, false); return; }
     var amt = parseFloat(amountEl.value);
-    setError(amountEl, !(amt >= 5000 && amt <= 100000));
+    setError(amountEl, !(amt >= 5000 && amt <= 175000));
   }
   amountEl.addEventListener('blur', checkAmount);
   amountEl.addEventListener('input', function () {
@@ -50,7 +50,7 @@
     setError(state, !state.value); if (!state.value) ok = false;
     // amount
     var amt = parseFloat(document.getElementById('amount').value);
-    var amtBad = !(amt >= 5000 && amt <= 100000);
+    var amtBad = !(amt >= 5000 && amt <= 175000);
     setError(document.getElementById('amount'), amtBad); if (amtBad) ok = false;
     // text
     ['name', 'email', 'phone'].forEach(function (id) {
