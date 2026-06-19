@@ -1,0 +1,15 @@
+{
+  "name": "propential",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Propential — static property-secured loan marketing & lead-capture site (no build step)",
+  "scripts": {
+    "dev": "serve . -l 3000",
+    "start": "serve . -l 3000",
+    "deploy": "vercel deploy",
+    "deploy:prod": "vercel deploy --prod"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}
