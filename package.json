@@ -2,6 +2,7 @@
   "name": "propential",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "description": "Propential — static property-secured loan marketing & lead-capture site, with a thin Vercel serverless backend for Formstack submissions (Neon Postgres + Drizzle).",
   "scripts": {
     "dev": "serve . -l 3000",

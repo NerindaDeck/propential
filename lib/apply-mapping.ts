@@ -1,5 +1,5 @@
 import { z } from "zod";
-import type { FormstackFieldEntry } from "./formstack";
+import type { FormstackFieldEntry } from "./formstack.js";
 
 /**
  * Request contract for apply.html — field names mirror apply.js exactly.

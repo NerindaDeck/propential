@@ -1,9 +1,9 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { eq } from "drizzle-orm";
-import { db } from "../db/client";
-import { submissions } from "../db/schema";
-import { applySchema, buildApplyFields } from "../lib/apply-mapping";
-import { submitToFormstack } from "../lib/formstack";
+import { db } from "../db/client.js";
+import { submissions } from "../db/schema.js";
+import { applySchema, buildApplyFields } from "../lib/apply-mapping.js";
+import { submitToFormstack } from "../lib/formstack.js";
 
 /**
  * POST /api/submit-apply
