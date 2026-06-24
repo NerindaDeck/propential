@@ -24,7 +24,7 @@
       <span class="eyebrow">Apply</span>
       <h1>Your application,<br><span class="italic-gold">start to finish.</span></h1>
     </div>
-    <p class="lead">A few sections about you, your property and the project. Everything is captured securely. Once you submit, our team assesses your application and comes back to you quickly with next steps.</p>
+    <p class="lead">A few sections about you, your finances, your property and the project. Everything is captured securely. Once you submit, our team assesses your application and comes back to you quickly with next steps.</p>
   </div>
 </section>
 
@@ -33,135 +33,510 @@
 
     <form id="applyForm" class="form-card" novalidate>
 
-      <!-- 1. APPLICANT -->
+      <!-- ════ 1. ABOUT YOU ════ -->
       <fieldset class="form-block">
         <legend><span class="blk-eyebrow">Section 1</span>About you</legend>
         <div class="field-grid">
-          <div class="field span-2"><label for="name">Full name</label><input class="input" id="name" name="name" type="text" autocomplete="name" required><p class="error-msg">Please enter your name.</p></div>
-          <div class="field"><label for="dob">Date of birth</label><input class="input" id="dob" name="dob" type="date" required><p class="error-msg">Please enter your date of birth.</p></div>
-          <div class="field"><label for="email">Email</label><input class="input" id="email" name="email" type="email" autocomplete="email" required><p class="error-msg">Please enter a valid email.</p></div>
-          <div class="field"><label for="phone">Phone</label><input class="input" id="phone" name="phone" type="tel" autocomplete="tel" required><p class="error-msg">Please enter your phone number.</p></div>
-          <div class="field span-2"><label for="resAddress">Residential address</label><input class="input" id="resAddress" name="resAddress" type="text" autocomplete="street-address" data-address-autocomplete required><p class="error-msg">Please enter your address.</p></div>
-        </div>
-      </fieldset>
-
-      <!-- 2. PROPERTY -->
-      <fieldset class="form-block">
-        <legend><span class="blk-eyebrow">Section 2</span>Your property</legend>
-        <div class="field-grid">
-          <div class="field span-2"><label for="propAddress">Property address (the security)</label><input class="input" id="propAddress" name="propAddress" type="text" autocomplete="street-address" data-address-autocomplete required><p class="hint">The property the loan will be secured against.</p><p class="error-msg">Please enter the property address.</p></div>
-          <div class="field"><label for="propState">State / territory</label>
-            <select class="select" id="propState" name="propState" required>
+          <div class="field"><label for="title">Title</label>
+            <select class="select" id="title" name="title" data-req>
               <option value="" disabled selected>Select</option>
-              <option>NSW</option><option>VIC</option><option>QLD</option><option>SA</option><option>WA</option><option>TAS</option><option>ACT</option><option>NT</option>
+              <option>Ms.</option><option>Mrs.</option><option>Mr.</option><option>Dr.</option><option>Prefer not to say</option>
             </select>
-            <p class="hint" id="secHint">Secured by a caveat in most states; a second mortgage in QLD &amp; NT.</p>
-            <p class="error-msg">Please select a state.</p>
+            <p class="error-msg">Please select a title.</p>
           </div>
-          <div class="field"><label for="propValue">Estimated property value $</label><div class="money-input"><input class="input" id="propValue" name="propValue" type="number" min="0" step="1000" inputmode="numeric" required></div><p class="error-msg">Please enter an estimate.</p></div>
-          <div class="field span-2"><label>Is there an existing mortgage on this property?</label>
-            <div class="chip-group" role="radiogroup" aria-label="Existing mortgage">
-              <label class="chip"><input type="radio" name="hasMortgage" value="yes" required><span>Yes</span></label>
-              <label class="chip"><input type="radio" name="hasMortgage" value="no"><span>No</span></label>
+          <div class="field"><label for="dob">Date of birth</label><input class="input" id="dob" name="dob" type="date" data-req required><p class="error-msg">Please enter your date of birth (you must be 18+).</p></div>
+          <div class="field"><label for="firstName">First name</label><input class="input" id="firstName" name="firstName" type="text" autocomplete="given-name" data-req required><p class="error-msg">Please enter your first name.</p></div>
+          <div class="field"><label for="middleName">Middle name <span class="opt">(optional)</span></label><input class="input" id="middleName" name="middleName" type="text" autocomplete="additional-name"></div>
+          <div class="field"><label for="lastName">Last name</label><input class="input" id="lastName" name="lastName" type="text" autocomplete="family-name" data-req required><p class="error-msg">Please enter your last name.</p></div>
+          <div class="field"><label for="email">Email</label><input class="input" id="email" name="email" type="email" autocomplete="email" data-req required><p class="error-msg">Please enter a valid email.</p></div>
+          <div class="field"><label for="phone">Mobile</label><input class="input" id="phone" name="phone" type="tel" autocomplete="tel" data-req required><p class="error-msg">Please enter your mobile number.</p></div>
+          <div class="field span-2"><label>Is this a joint application?</label>
+            <div class="chip-group" role="radiogroup" data-req data-name="joint">
+              <label class="chip"><input type="radio" name="joint" value="No"><span>No</span></label>
+              <label class="chip"><input type="radio" name="joint" value="Yes"><span>Yes</span></label>
             </div>
             <p class="error-msg">Please choose an option.</p>
           </div>
-          <div class="field mortgage-only"><label for="lender">Existing lender</label><input class="input" id="lender" name="lender" type="text"></div>
-          <div class="field mortgage-only"><label for="mortBalance">Approx. mortgage balance $</label><div class="money-input"><input class="input" id="mortBalance" name="mortBalance" type="number" min="0" step="1000" inputmode="numeric"></div></div>
+          <div class="field cond" data-when="joint|Yes"><label for="jointName">Their name</label><input class="input" id="jointName" name="jointName" type="text" data-req><p class="error-msg">Please enter their name.</p></div>
+          <div class="field cond" data-when="joint|Yes"><label for="jointEmail">Their email</label><input class="input" id="jointEmail" name="jointEmail" type="email" data-req data-email><p class="error-msg">Please enter a valid email.</p></div>
         </div>
       </fieldset>
 
-      <!-- 3. LOAN -->
+      <!-- ════ 2. YOUR LOAN ════ -->
       <fieldset class="form-block">
-        <legend><span class="blk-eyebrow">Section 3</span>Your loan</legend>
+        <legend><span class="blk-eyebrow">Section 2</span>Your loan</legend>
         <div class="field-grid">
-          <div class="field"><label for="amount">Amount you'd like to borrow $</label><div class="money-input"><input class="input" id="amount" name="amount" type="number" min="5000" max="175000" step="500" placeholder="25,000" inputmode="numeric" required></div><p class="hint">$5,000 – $175,000.</p><p class="error-msg" id="amountErr">Enter $5,000–$175,000.</p></div>
-          <div class="field"><label for="term">Preferred term</label>
-            <select class="select" id="term" name="term" required>
+          <div class="field span-2"><label>What is the purpose of the funds?</label>
+            <div class="chip-group" role="radiogroup" data-req data-name="purpose">
+              <label class="chip"><input type="radio" name="purpose" value="Home renovation"><span>Home renovation</span></label>
+              <label class="chip"><input type="radio" name="purpose" value="Investment property renovation"><span>Investment property renovation</span></label>
+            </div>
+            <p class="error-msg">Please choose a purpose.</p>
+          </div>
+          <div class="field span-2"><label>What type of renovation? <span class="opt">(select all that apply)</span></label>
+            <div class="chip-group" role="group" aria-label="Project type">
+              <label class="chip"><input type="checkbox" name="project" value="Kitchen"><span>Kitchen</span></label>
+              <label class="chip"><input type="checkbox" name="project" value="Bathroom"><span>Bathroom</span></label>
+              <label class="chip"><input type="checkbox" name="project" value="Pool"><span>Pool</span></label>
+              <label class="chip"><input type="checkbox" name="project" value="Other"><span>Other</span></label>
+            </div>
+          </div>
+          <div class="field"><label for="amount">How much would you like to borrow? $</label><div class="money-input"><input class="input" id="amount" name="amount" type="number" min="5000" max="175000" step="500" placeholder="25,000" inputmode="numeric" data-req required></div><p class="hint">$5,000 – $175,000.</p><p class="error-msg" id="amountErr">Enter $5,000–$175,000.</p></div>
+          <div class="field"><label for="term">Choose your repayment term</label>
+            <select class="select" id="term" name="term" data-req required>
               <option value="" disabled selected>Select a term</option>
             </select>
             <p class="hint" id="termHint">1–7 years up to $50k; up to 10 years above $50k.</p>
             <p class="error-msg">Please select a term.</p>
           </div>
-          <div class="field span-2"><label>What's the project? <span class="opt">(select all that apply)</span></label>
-            <div class="chip-group" role="group" aria-label="Project type">
-              <label class="chip"><input type="checkbox" name="project" value="Interiors"><span>Interiors</span></label>
-              <label class="chip"><input type="checkbox" name="project" value="Pool"><span>Pool</span></label>
-              <label class="chip"><input type="checkbox" name="project" value="Fencing"><span>Fencing</span></label>
-              <label class="chip"><input type="checkbox" name="project" value="Landscaping"><span>Landscaping</span></label>
-              <label class="chip"><input type="checkbox" name="project" value="Roofing"><span>Roofing</span></label>
-              <label class="chip"><input type="checkbox" name="project" value="Other"><span>Something else</span></label>
-            </div>
-            <p class="error-msg">Please choose at least one.</p>
-          </div>
-          <div class="field span-2"><label for="purpose">Tell us a little about the project <span class="opt">(optional)</span></label><textarea class="input" id="purpose" name="purpose" rows="3"></textarea></div>
         </div>
       </fieldset>
 
-      <!-- 4. SERVICEABILITY -->
+      <!-- ════ 3. EMPLOYMENT ════ -->
       <fieldset class="form-block">
-        <legend><span class="blk-eyebrow">Section 4</span>Income &amp; expenses</legend>
+        <legend><span class="blk-eyebrow">Section 3</span>Employment</legend>
         <div class="field-grid">
-          <div class="field"><label for="employment">Employment status</label>
-            <select class="select" id="employment" name="employment" required>
+          <div class="field span-2"><label for="employment">Employment status</label>
+            <select class="select" id="employment" name="employment" data-req required>
               <option value="" disabled selected>Select</option>
-              <option>Full-time</option><option>Part-time</option><option>Casual</option><option>Self-employed</option><option>Retired</option><option>Other</option>
+              <option>Full time</option><option>Part time</option><option>Casual/Temp</option><option>Contractor</option><option>Self-employed</option><option>Stay-at-home partner</option><option>Retired</option><option>Unemployed</option><option>None of the above</option>
             </select>
             <p class="error-msg">Please select your status.</p>
           </div>
-          <div class="field"><label for="income">Gross annual income $</label><div class="money-input"><input class="input" id="income" name="income" type="number" min="0" step="1000" inputmode="numeric" required></div><p class="error-msg">Please enter your income.</p></div>
-          <div class="field"><label for="expenses">Total monthly living expenses $</label><div class="money-input"><input class="input" id="expenses" name="expenses" type="number" min="0" step="50" inputmode="numeric" required></div><p class="error-msg">Please enter your expenses.</p></div>
-          <div class="field"><label for="otherDebts">Other monthly debt repayments $</label><div class="money-input"><input class="input" id="otherDebts" name="otherDebts" type="number" min="0" step="50" inputmode="numeric" required></div><p class="hint">Cards, loans, etc. Enter 0 if none.</p><p class="error-msg">Please enter an amount (0 if none).</p></div>
+          <div class="field span-2"><label for="employmentDetail">Please provide more detail about your employment status</label><input class="input" id="employmentDetail" name="employmentDetail" type="text" data-req><p class="error-msg">Please add some detail.</p></div>
+
+          <!-- employed branch -->
+          <div class="field cond" data-when="employment|Full time,Part time,Casual/Temp,Contractor"><label for="industry">Industry sector</label>
+            <select class="select" id="industry" name="industry" data-req><option value="" disabled selected>Select</option></select>
+            <p class="error-msg">Please select an industry.</p>
+          </div>
+          <div class="field cond" data-when="employment|Full time,Part time,Casual/Temp,Contractor"><label for="jobTitle">Job title</label><input class="input combo" id="jobTitle" name="jobTitle" type="text" autocomplete="off" data-source="PROPENTIAL_JOB_TITLES" data-req><p class="hint">Start typing and pick from the list.</p><p class="error-msg">Please pick a job title from the list.</p></div>
+          <div class="field cond" data-when="employment|Full time,Part time,Casual/Temp,Contractor"><label for="jobTenure">How long have you worked here?</label>
+            <select class="select" id="jobTenure" name="jobTenure" data-req>
+              <option value="" disabled selected>Select</option>
+              <option>2 years or more</option><option>Between 1 and 2 years</option><option>Between 3 and 12 months</option><option>Less than 3 months</option>
+            </select>
+            <p class="error-msg">Please choose.</p>
+          </div>
+          <div class="field cond" data-when="employment|Full time,Part time,Casual/Temp,Contractor"><label for="employerName">Employer business name</label><input class="input" id="employerName" name="employerName" type="text" data-req><p class="error-msg">Please enter your employer.</p></div>
+
+          <!-- previous employment (if < 2 years) -->
+          <div class="field cond" data-when="jobTenure|Between 1 and 2 years,Between 3 and 12 months,Less than 3 months"><label for="prevJobTitle">Previous employment job title</label><input class="input combo" id="prevJobTitle" name="prevJobTitle" type="text" autocomplete="off" data-source="PROPENTIAL_JOB_TITLES" data-req><p class="error-msg">Please pick a job title from the list.</p></div>
+          <div class="field cond" data-when="jobTenure|Between 1 and 2 years,Between 3 and 12 months,Less than 3 months"><label for="prevEmployerName">Previous employer business name</label><input class="input" id="prevEmployerName" name="prevEmployerName" type="text" data-req><p class="error-msg">Please enter the employer.</p></div>
+
+          <!-- self-employed branch -->
+          <div class="field cond" data-when="employment|Self-employed"><label for="selfEmployedTenure">How long have you been self employed?</label>
+            <select class="select" id="selfEmployedTenure" name="selfEmployedTenure" data-req>
+              <option value="" disabled selected>Select</option>
+              <option>2 years or more</option><option>Between 1 and 2 years</option><option>Between 3 and 12 months</option><option>Less than 3 months</option>
+            </select>
+            <p class="error-msg">Please choose.</p>
+          </div>
+          <div class="field cond" data-when="employment|Self-employed"><label for="businessName">Business name</label><input class="input" id="businessName" name="businessName" type="text" data-req><p class="error-msg">Please enter your business name.</p></div>
+          <div class="field cond" data-when="employment|Self-employed"><label for="businessAbn">Business ABN</label><input class="input" id="businessAbn" name="businessAbn" type="text" inputmode="numeric" data-req data-abn><p class="error-msg">Enter a valid 11-digit ABN.</p></div>
         </div>
       </fieldset>
 
-      <!-- 5. IDENTITY -->
+      <!-- ════ 4. HOME ADDRESS & LIVING ════ -->
       <fieldset class="form-block">
-        <legend><span class="blk-eyebrow">Section 5</span>Identity</legend>
+        <legend><span class="blk-eyebrow">Section 4</span>Home address &amp; living situation</legend>
         <div class="field-grid">
-          <div class="field"><label for="idType">ID type</label>
-            <select class="select" id="idType" name="idType" required>
-              <option value="" disabled selected>Select</option>
-              <option>Australian driver licence</option><option>Australian passport</option><option>Other government ID</option>
-            </select>
-            <p class="error-msg">Please select an ID type.</p>
+          <div class="field span-2"><label for="resAddress">Home address</label><input class="input" id="resAddress" name="resAddress" type="text" autocomplete="street-address" data-address-autocomplete data-req required><p class="error-msg">Please enter your address.</p></div>
+          <div class="addr-grid span-2">
+            <div class="field"><label for="resCity">Suburb / City</label><input class="input" id="resCity" name="resCity" type="text" autocomplete="address-level2" data-req><p class="error-msg">Required.</p></div>
+            <div class="field"><label for="resState">State</label>
+              <select class="select" id="resState" name="resState" data-req><option value="" disabled selected>Select</option><option>NSW</option><option>ACT</option><option>QLD</option><option>VIC</option><option>SA</option><option>NT</option><option>TAS</option><option>WA</option></select>
+              <p class="error-msg">Required.</p>
+            </div>
+            <div class="field"><label for="resPostcode">Postcode</label><input class="input" id="resPostcode" name="resPostcode" type="text" inputmode="numeric" maxlength="4" autocomplete="postal-code" data-req data-postcode><p class="error-msg">4 digits.</p></div>
           </div>
-          <div class="field"><label for="idIssuedState">Issued state</label>
-            <select class="select" id="idIssuedState" name="idIssuedState" required>
+          <div class="field span-2"><label>How long have you lived at this address?</label>
+            <div class="chip-group" role="radiogroup" data-req data-name="addressTenure">
+              <label class="chip"><input type="radio" name="addressTenure" value="2 years or longer"><span>2 years or longer</span></label>
+              <label class="chip"><input type="radio" name="addressTenure" value="Less than 2 years"><span>Less than 2 years</span></label>
+            </div>
+            <p class="error-msg">Please choose an option.</p>
+          </div>
+          <div class="field span-2 cond" data-when="addressTenure|Less than 2 years"><label for="prevResAddress">Previous address</label><input class="input" id="prevResAddress" name="prevResAddress" type="text" autocomplete="street-address" data-req><p class="error-msg">Please enter your previous address.</p></div>
+          <div class="field span-2"><label for="ownership">Home ownership status</label>
+            <select class="select" id="ownership" name="ownership" data-req required>
               <option value="" disabled selected>Select</option>
-              <option>NSW</option><option>VIC</option><option>QLD</option><option>WA</option><option>SA</option><option>TAS</option><option>ACT</option><option>NT</option>
+              <option>Renting</option><option>I own it - paying off mortgage</option><option>I own it - mortgage already paid</option><option>Not paying rent- living with family</option><option>Other</option>
             </select>
+            <p class="error-msg">Please choose an option.</p>
+          </div>
+          <div class="field span-2 cond" data-when="ownership|Other"><label for="ownershipOther">Please explain your ownership status</label><input class="input" id="ownershipOther" name="ownershipOther" type="text" data-req><p class="error-msg">Please explain.</p></div>
+          <div class="field cond" data-when="ownership|I own it - paying off mortgage,I own it - mortgage already paid"><label for="homeValue">Estimated value of your home $</label><div class="money-input"><input class="input" id="homeValue" name="homeValue" type="number" min="0" step="1000" inputmode="numeric" data-req></div><p class="error-msg">Please enter an estimate.</p></div>
+          <div class="field cond" data-when="ownership|I own it - paying off mortgage"><label for="mortBalance">Amount owing on your mortgage $</label><div class="money-input"><input class="input" id="mortBalance" name="mortBalance" type="number" min="0" step="1000" inputmode="numeric" data-req></div><p class="error-msg">Please enter the amount owing.</p></div>
+          <div class="field span-2"><label for="relationship">Relationship status</label>
+            <select class="select" id="relationship" name="relationship" data-req required>
+              <option value="" disabled selected>Select</option>
+              <option>Single</option><option>De facto</option><option>Married</option><option>Divorced or separated</option><option>Widowed</option>
+            </select>
+            <p class="error-msg">Please choose an option.</p>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- ════ 5. RENOVATION PROPERTY ════ -->
+      <fieldset class="form-block">
+        <legend><span class="blk-eyebrow">Section 5</span>The property to be renovated</legend>
+        <div class="field-grid">
+          <div class="field span-2"><label>Is your home address the property to be renovated?</label>
+            <div class="chip-group" role="radiogroup" data-req data-name="renoIsHome">
+              <label class="chip"><input type="radio" name="renoIsHome" value="Yes"><span>Yes</span></label>
+              <label class="chip"><input type="radio" name="renoIsHome" value="No"><span>No</span></label>
+            </div>
+            <p class="error-msg">Please choose an option.</p>
+          </div>
+          <div class="field span-2 cond" data-when="renoIsHome|No"><label for="propAddress">Renovation property address</label><input class="input" id="propAddress" name="propAddress" type="text" autocomplete="street-address" data-address-autocomplete data-req><p class="hint">The property the loan will be secured against.</p><p class="error-msg">Please enter the property address.</p></div>
+          <div class="addr-grid span-2 cond" data-when="renoIsHome|No">
+            <div class="field"><label for="propCity">Suburb / City</label><input class="input" id="propCity" name="propCity" type="text" data-req><p class="error-msg">Required.</p></div>
+            <div class="field"><label for="propState">State</label>
+              <select class="select" id="propState" name="propState" data-req><option value="" disabled selected>Select</option><option>NSW</option><option>ACT</option><option>QLD</option><option>VIC</option><option>SA</option><option>NT</option><option>TAS</option><option>WA</option></select>
+              <p class="error-msg">Required.</p>
+            </div>
+            <div class="field"><label for="propPostcode">Postcode</label><input class="input" id="propPostcode" name="propPostcode" type="text" inputmode="numeric" maxlength="4" data-req data-postcode><p class="error-msg">4 digits.</p></div>
+          </div>
+          <div class="field span-2"><label>Are you on title of the property to be renovated?</label>
+            <div class="chip-group" role="radiogroup" data-req data-name="onTitle">
+              <label class="chip"><input type="radio" name="onTitle" value="Yes"><span>Yes</span></label>
+              <label class="chip"><input type="radio" name="onTitle" value="No"><span>No</span></label>
+            </div>
+            <p class="error-msg">Please choose an option.</p>
+          </div>
+          <div class="field span-2 cond" data-when="onTitle|No"><label for="titleOwner">Please explain who owns the property (is on title)</label><input class="input" id="titleOwner" name="titleOwner" type="text" data-req><p class="error-msg">Please explain.</p></div>
+          <div class="field"><label for="propValue">Estimated value of this property $</label><div class="money-input"><input class="input" id="propValue" name="propValue" type="number" min="0" step="1000" inputmode="numeric" data-req required></div><p class="error-msg">Please enter an estimate.</p></div>
+          <div class="field"><label for="propRentalIncome">Monthly rental income from this property $</label><div class="money-input"><input class="input" id="propRentalIncome" name="propRentalIncome" type="number" min="0" step="50" inputmode="numeric" data-req></div><p class="hint">Enter 0 if none.</p><p class="error-msg">Required (0 if none).</p></div>
+          <div class="field span-2"><label>Do you have a loan (mortgage) on the property?</label>
+            <div class="chip-group" role="radiogroup" data-req data-name="propHasLoan">
+              <label class="chip"><input type="radio" name="propHasLoan" value="No"><span>No</span></label>
+              <label class="chip"><input type="radio" name="propHasLoan" value="Yes"><span>Yes</span></label>
+            </div>
+            <p class="error-msg">Please choose an option.</p>
+          </div>
+          <div class="field cond" data-when="propHasLoan|Yes"><label for="propLoanOwing">Amount owing on the loan $</label><div class="money-input"><input class="input" id="propLoanOwing" name="propLoanOwing" type="number" min="0" step="1000" inputmode="numeric" data-req></div><p class="error-msg">Please enter the amount owing.</p></div>
+          <div class="field cond" data-when="propHasLoan|Yes"><label for="propLoanRepayment">Monthly loan repayments $</label><div class="money-input"><input class="input" id="propLoanRepayment" name="propLoanRepayment" type="number" min="0" step="50" inputmode="numeric" data-req></div><p class="error-msg">Please enter the repayment.</p></div>
+        </div>
+      </fieldset>
+
+      <!-- ════ 6. INCOME ════ -->
+      <fieldset class="form-block">
+        <legend><span class="blk-eyebrow">Section 6</span>Income</legend>
+        <div class="field-grid">
+          <div class="field"><label for="income">Gross annual salary (before tax/super) $</label><div class="money-input"><input class="input" id="income" name="income" type="number" min="0" step="1000" inputmode="numeric" data-req required></div><p class="error-msg">Please enter your income.</p></div>
+          <div class="field"><label for="payFrequency">How often do you get paid?</label>
+            <select class="select" id="payFrequency" name="payFrequency" data-req><option value="" disabled selected>Select</option><option>Weekly</option><option>Fortnightly</option><option>Monthly</option></select>
+            <p class="error-msg">Please choose.</p>
+          </div>
+          <div class="field span-2"><label>Do you receive a payment from Centrelink?</label>
+            <div class="chip-group" role="radiogroup" data-req data-name="centrelink">
+              <label class="chip"><input type="radio" name="centrelink" value="No"><span>No</span></label>
+              <label class="chip"><input type="radio" name="centrelink" value="Yes"><span>Yes</span></label>
+            </div>
+            <p class="error-msg">Please choose an option.</p>
+          </div>
+
+          <!-- Centrelink repeat -->
+          <div class="repeat span-2 cond" data-when="centrelink|Yes">
+            <div class="field-grid">
+              <div class="field"><label for="cl1Type">Centrelink payment 1 type</label>
+                <select class="select" id="cl1Type" name="cl1Type" data-req><option value="" disabled selected>Select</option><option>Family Tax Benefit Part A or B</option><option>Carers Payment</option><option>Age Pension</option><option>Disability Support Pension</option><option>Other</option></select>
+                <p class="error-msg">Please choose.</p>
+              </div>
+              <div class="field"><label for="cl1Amount">Payment 1 fortnightly amount $</label><div class="money-input"><input class="input" id="cl1Amount" name="cl1Amount" type="number" min="0" step="1" inputmode="numeric" data-req></div><p class="error-msg">Required.</p></div>
+            </div>
+            <label class="addmore"><input type="checkbox" id="addCl2" name="addCl2" data-toggle> Add another Centrelink payment</label>
+            <div class="cond" data-when="addCl2|checked">
+              <div class="field-grid">
+                <div class="field"><label for="cl2Type">Centrelink payment 2 type</label>
+                  <select class="select" id="cl2Type" name="cl2Type" data-req><option value="" disabled selected>Select</option><option>Family Tax Benefit Part A or B</option><option>Carers Payment</option><option>Age Pension</option><option>Disability Support Pension</option><option>Other</option></select>
+                  <p class="error-msg">Please choose.</p>
+                </div>
+                <div class="field"><label for="cl2Amount">Payment 2 fortnightly amount $</label><div class="money-input"><input class="input" id="cl2Amount" name="cl2Amount" type="number" min="0" step="1" inputmode="numeric" data-req></div><p class="error-msg">Required.</p></div>
+              </div>
+              <label class="addmore"><input type="checkbox" id="addCl3" name="addCl3" data-toggle> Add another Centrelink payment</label>
+              <div class="cond" data-when="addCl3|checked">
+                <div class="field-grid">
+                  <div class="field"><label for="cl3Type">Centrelink payment 3 type</label>
+                    <select class="select" id="cl3Type" name="cl3Type" data-req><option value="" disabled selected>Select</option><option>Family Tax Benefit Part A or B</option><option>Carers Payment</option><option>Age Pension</option><option>Disability Support Pension</option><option>Other</option></select>
+                    <p class="error-msg">Please choose.</p>
+                  </div>
+                  <div class="field"><label for="cl3Amount">Payment 3 fortnightly amount $</label><div class="money-input"><input class="input" id="cl3Amount" name="cl3Amount" type="number" min="0" step="1" inputmode="numeric" data-req></div><p class="error-msg">Required.</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="field span-2"><label>Do you have any other source of income?</label>
+            <div class="chip-group" role="radiogroup" data-req data-name="otherIncome">
+              <label class="chip"><input type="radio" name="otherIncome" value="No"><span>No</span></label>
+              <label class="chip"><input type="radio" name="otherIncome" value="Yes"><span>Yes</span></label>
+            </div>
+            <p class="error-msg">Please choose an option.</p>
+          </div>
+
+          <!-- Other income repeat -->
+          <div class="repeat span-2 cond" data-when="otherIncome|Yes">
+            <div class="field-grid">
+              <div class="field"><label for="src1Type">Source 1 type</label>
+                <select class="select" id="src1Type" name="src1Type" data-req><option value="" disabled selected>Select</option><option>Bonus, commission or overtime</option><option>Second job</option><option>Interest or dividends</option><option>Other</option></select>
+                <p class="error-msg">Please choose.</p>
+              </div>
+              <div class="field"><label for="src1Amount">Source 1 monthly amount $</label><div class="money-input"><input class="input" id="src1Amount" name="src1Amount" type="number" min="0" step="1" inputmode="numeric" data-req></div><p class="error-msg">Required.</p></div>
+            </div>
+            <label class="addmore"><input type="checkbox" id="addSrc2" name="addSrc2" data-toggle> Add another source of income</label>
+            <div class="cond" data-when="addSrc2|checked">
+              <div class="field-grid">
+                <div class="field"><label for="src2Type">Source 2 type</label>
+                  <select class="select" id="src2Type" name="src2Type" data-req><option value="" disabled selected>Select</option><option>Bonus, commission or overtime</option><option>Second job</option><option>Interest or dividends</option><option>Other</option></select>
+                  <p class="error-msg">Please choose.</p>
+                </div>
+                <div class="field"><label for="src2Amount">Source 2 monthly amount $</label><div class="money-input"><input class="input" id="src2Amount" name="src2Amount" type="number" min="0" step="1" inputmode="numeric" data-req></div><p class="error-msg">Required.</p></div>
+              </div>
+              <label class="addmore"><input type="checkbox" id="addSrc3" name="addSrc3" data-toggle> Add another source of income</label>
+              <div class="cond" data-when="addSrc3|checked">
+                <div class="field-grid">
+                  <div class="field"><label for="src3Type">Source 3 type</label>
+                    <select class="select" id="src3Type" name="src3Type" data-req><option value="" disabled selected>Select</option><option>Bonus, commission or overtime</option><option>Second job</option><option>Interest or dividends</option><option>Other</option></select>
+                    <p class="error-msg">Please choose.</p>
+                  </div>
+                  <div class="field"><label for="src3Amount">Source 3 monthly amount $</label><div class="money-input"><input class="input" id="src3Amount" name="src3Amount" type="number" min="0" step="1" inputmode="numeric" data-req></div><p class="error-msg">Required.</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- ════ 7. EXPENSES ════ -->
+      <fieldset class="form-block">
+        <legend><span class="blk-eyebrow">Section 7</span>Expenses &amp; commitments</legend>
+        <div class="field-grid">
+          <div class="field"><label for="generalExpenses">General household monthly living expenses $</label><div class="money-input"><input class="input" id="generalExpenses" name="generalExpenses" type="number" min="0" step="50" inputmode="numeric" data-req></div><p class="error-msg">Required.</p></div>
+          <div class="field"><label for="expenses">Total household monthly living expenses $</label><div class="money-input"><input class="input" id="expenses" name="expenses" type="number" min="0" step="50" inputmode="numeric" data-req required></div><p class="error-msg">Required.</p></div>
+          <div class="field span-2"><label>What % of total living expenses does your spouse/partner pay?</label>
+            <div class="chip-group" role="radiogroup" data-req data-name="spouseExpensePct">
+              <label class="chip"><input type="radio" name="spouseExpensePct" value="From 0% - 19%"><span>0–19%</span></label>
+              <label class="chip"><input type="radio" name="spouseExpensePct" value="From 20% - 49%"><span>20–49%</span></label>
+              <label class="chip"><input type="radio" name="spouseExpensePct" value="50% or more"><span>50% or more</span></label>
+            </div>
+            <p class="error-msg">Please choose an option.</p>
+          </div>
+          <div class="field"><label for="rentFrequency">How often do you pay rent or mortgage?</label>
+            <select class="select" id="rentFrequency" name="rentFrequency" data-req><option value="" disabled selected>Select</option><option>Weekly</option><option>Fortnightly</option><option>Monthly</option></select>
+            <p class="error-msg">Please choose.</p>
+          </div>
+          <div class="field"><label for="rentAmount">How much rent or mortgage each time? $</label><div class="money-input"><input class="input" id="rentAmount" name="rentAmount" type="number" min="0" step="10" inputmode="numeric" data-req></div><p class="error-msg">Required.</p></div>
+          <div class="field span-2"><label>What % of rent/mortgage does your spouse/partner pay? <span class="opt">(optional)</span></label>
+            <div class="chip-group" role="radiogroup" data-name="spouseRentPct">
+              <label class="chip"><input type="radio" name="spouseRentPct" value="From 0% - 19%"><span>0–19%</span></label>
+              <label class="chip"><input type="radio" name="spouseRentPct" value="From 20% - 49%"><span>20–49%</span></label>
+              <label class="chip"><input type="radio" name="spouseRentPct" value="50% or more"><span>50% or more</span></label>
+            </div>
+          </div>
+          <div class="field span-2"><label>Do you expect a significant adverse change to your finances in the next 6–12 months?</label>
+            <div class="chip-group" role="radiogroup" data-req data-name="adverseChange">
+              <label class="chip"><input type="radio" name="adverseChange" value="No"><span>No</span></label>
+              <label class="chip"><input type="radio" name="adverseChange" value="Yes"><span>Yes</span></label>
+            </div>
+            <p class="error-msg">Please choose an option.</p>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- ════ 8. ASSETS & LIABILITIES ════ -->
+      <fieldset class="form-block">
+        <legend><span class="blk-eyebrow">Section 8</span>Assets &amp; liabilities</legend>
+
+        <!-- Investment property -->
+        <div class="field-grid">
+          <div class="field span-2"><label>Do you own any other investment property?</label>
+            <div class="chip-group" role="radiogroup" data-req data-name="investmentProperty">
+              <label class="chip"><input type="radio" name="investmentProperty" value="No"><span>No</span></label>
+              <label class="chip"><input type="radio" name="investmentProperty" value="Yes"><span>Yes</span></label>
+            </div>
+            <p class="error-msg">Please choose an option.</p>
+          </div>
+        </div>
+        <div class="repeat cond" data-when="investmentProperty|Yes">
+          <p class="sub-eyebrow">Property 1</p>
+          <div class="field-grid">
+            <div class="field"><label for="ip1Rental">Monthly rental income $</label><div class="money-input"><input class="input" id="ip1Rental" name="ip1Rental" type="number" min="0" step="50" inputmode="numeric" data-req></div><p class="error-msg">Required.</p></div>
+            <div class="field"><label for="ip1Value">Estimated value $</label><div class="money-input"><input class="input" id="ip1Value" name="ip1Value" type="number" min="0" step="1000" inputmode="numeric" data-req></div><p class="error-msg">Required.</p></div>
+            <div class="field span-2"><label>Making mortgage repayments on this property?</label>
+              <div class="chip-group" role="radiogroup" data-name="ip1HasMortgage">
+                <label class="chip"><input type="radio" name="ip1HasMortgage" value="No"><span>No</span></label>
+                <label class="chip"><input type="radio" name="ip1HasMortgage" value="Yes"><span>Yes</span></label>
+              </div>
+            </div>
+            <div class="field cond" data-when="ip1HasMortgage|Yes"><label for="ip1Repayment">Monthly mortgage repayment $</label><div class="money-input"><input class="input" id="ip1Repayment" name="ip1Repayment" type="number" min="0" step="50" inputmode="numeric" data-req></div><p class="error-msg">Required.</p></div>
+            <div class="field cond" data-when="ip1HasMortgage|Yes"><label for="ip1Owing">Amount owing on mortgage $</label><div class="money-input"><input class="input" id="ip1Owing" name="ip1Owing" type="number" min="0" step="1000" inputmode="numeric" data-req></div><p class="error-msg">Required.</p></div>
+          </div>
+          <label class="addmore"><input type="checkbox" id="addIp2" name="addIp2" data-toggle> Add another property</label>
+          <div class="cond" data-when="addIp2|checked">
+            <p class="sub-eyebrow">Property 2</p>
+            <div class="field-grid">
+              <div class="field"><label for="ip2Rental">Monthly rental income $</label><div class="money-input"><input class="input" id="ip2Rental" name="ip2Rental" type="number" min="0" step="50" inputmode="numeric" data-req></div><p class="error-msg">Required.</p></div>
+              <div class="field"><label for="ip2Value">Estimated value $</label><div class="money-input"><input class="input" id="ip2Value" name="ip2Value" type="number" min="0" step="1000" inputmode="numeric" data-req></div><p class="error-msg">Required.</p></div>
+              <div class="field span-2"><label>Making mortgage repayments on this property?</label>
+                <div class="chip-group" role="radiogroup" data-name="ip2HasMortgage">
+                  <label class="chip"><input type="radio" name="ip2HasMortgage" value="No"><span>No</span></label>
+                  <label class="chip"><input type="radio" name="ip2HasMortgage" value="Yes"><span>Yes</span></label>
+                </div>
+              </div>
+              <div class="field cond" data-when="ip2HasMortgage|Yes"><label for="ip2Repayment">Monthly mortgage repayment $</label><div class="money-input"><input class="input" id="ip2Repayment" name="ip2Repayment" type="number" min="0" step="50" inputmode="numeric" data-req></div><p class="error-msg">Required.</p></div>
+              <div class="field cond" data-when="ip2HasMortgage|Yes"><label for="ip2Owing">Amount owing on mortgage $</label><div class="money-input"><input class="input" id="ip2Owing" name="ip2Owing" type="number" min="0" step="1000" inputmode="numeric" data-req></div><p class="error-msg">Required.</p></div>
+            </div>
+            <label class="addmore"><input type="checkbox" id="addIp3" name="addIp3" data-toggle> Add another property</label>
+            <div class="cond" data-when="addIp3|checked">
+              <p class="sub-eyebrow">Property 3</p>
+              <div class="field-grid">
+                <div class="field"><label for="ip3Rental">Monthly rental income $</label><div class="money-input"><input class="input" id="ip3Rental" name="ip3Rental" type="number" min="0" step="50" inputmode="numeric" data-req></div><p class="error-msg">Required.</p></div>
+                <div class="field"><label for="ip3Value">Estimated value $</label><div class="money-input"><input class="input" id="ip3Value" name="ip3Value" type="number" min="0" step="1000" inputmode="numeric" data-req></div><p class="error-msg">Required.</p></div>
+                <div class="field span-2"><label>Making mortgage repayments on this property?</label>
+                  <div class="chip-group" role="radiogroup" data-name="ip3HasMortgage">
+                    <label class="chip"><input type="radio" name="ip3HasMortgage" value="No"><span>No</span></label>
+                    <label class="chip"><input type="radio" name="ip3HasMortgage" value="Yes"><span>Yes</span></label>
+                  </div>
+                </div>
+                <div class="field cond" data-when="ip3HasMortgage|Yes"><label for="ip3Repayment">Monthly mortgage repayment $</label><div class="money-input"><input class="input" id="ip3Repayment" name="ip3Repayment" type="number" min="0" step="50" inputmode="numeric" data-req></div><p class="error-msg">Required.</p></div>
+                <div class="field cond" data-when="ip3HasMortgage|Yes"><label for="ip3Owing">Amount owing on mortgage $</label><div class="money-input"><input class="input" id="ip3Owing" name="ip3Owing" type="number" min="0" step="1000" inputmode="numeric" data-req></div><p class="error-msg">Required.</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Other assets -->
+        <div class="field-grid" style="margin-top:24px">
+          <div class="field span-2"><label>Do you own any other non-property assets?</label>
+            <div class="chip-group" role="radiogroup" data-req data-name="otherAssets">
+              <label class="chip"><input type="radio" name="otherAssets" value="No"><span>No</span></label>
+              <label class="chip"><input type="radio" name="otherAssets" value="Yes"><span>Yes</span></label>
+            </div>
+            <p class="error-msg">Please choose an option.</p>
+          </div>
+        </div>
+        <div class="repeat cond" data-when="otherAssets|Yes">
+          <div class="field-grid">
+            <div class="field"><label for="asset1Type">Asset 1 type</label>
+              <select class="select" id="asset1Type" name="asset1Type" data-req><option value="" disabled selected>Select</option><option>Car</option><option>Motorbike</option><option>Boat</option><option>Caravan</option><option>Savings</option><option>Other</option></select>
+              <p class="error-msg">Please choose.</p>
+            </div>
+            <div class="field"><label for="asset1Value">Asset 1 estimated value $</label><div class="money-input"><input class="input" id="asset1Value" name="asset1Value" type="number" min="0" step="100" inputmode="numeric" data-req></div><p class="error-msg">Required.</p></div>
+          </div>
+          <label class="addmore"><input type="checkbox" id="addAsset2" name="addAsset2" data-toggle> Add other asset</label>
+          <div class="cond" data-when="addAsset2|checked">
+            <div class="field-grid">
+              <div class="field"><label for="asset2Type">Asset 2 type</label>
+                <select class="select" id="asset2Type" name="asset2Type" data-req><option value="" disabled selected>Select</option><option>Car</option><option>Motorbike</option><option>Boat</option><option>Caravan</option><option>Savings</option><option>Other</option></select>
+                <p class="error-msg">Please choose.</p>
+              </div>
+              <div class="field"><label for="asset2Value">Asset 2 estimated value $</label><div class="money-input"><input class="input" id="asset2Value" name="asset2Value" type="number" min="0" step="100" inputmode="numeric" data-req></div><p class="error-msg">Required.</p></div>
+            </div>
+            <label class="addmore"><input type="checkbox" id="addAsset3" name="addAsset3" data-toggle> Add other asset</label>
+            <div class="cond" data-when="addAsset3|checked">
+              <div class="field-grid">
+                <div class="field"><label for="asset3Type">Asset 3 type</label>
+                  <select class="select" id="asset3Type" name="asset3Type" data-req><option value="" disabled selected>Select</option><option>Car</option><option>Motorbike</option><option>Boat</option><option>Caravan</option><option>Savings</option><option>Other</option></select>
+                  <p class="error-msg">Please choose.</p>
+                </div>
+                <div class="field"><label for="asset3Value">Asset 3 estimated value $</label><div class="money-input"><input class="input" id="asset3Value" name="asset3Value" type="number" min="0" step="100" inputmode="numeric" data-req></div><p class="error-msg">Required.</p></div>
+              </div>
+              <label class="addmore"><input type="checkbox" id="addAsset4" name="addAsset4" data-toggle> Add other asset</label>
+              <div class="cond" data-when="addAsset4|checked">
+                <div class="field-grid">
+                  <div class="field"><label for="asset4Type">Asset 4 type</label>
+                    <select class="select" id="asset4Type" name="asset4Type" data-req><option value="" disabled selected>Select</option><option>Car</option><option>Motorbike</option><option>Boat</option><option>Caravan</option><option>Savings</option><option>Other</option></select>
+                    <p class="error-msg">Please choose.</p>
+                  </div>
+                  <div class="field"><label for="asset4Value">Asset 4 estimated value $</label><div class="money-input"><input class="input" id="asset4Value" name="asset4Value" type="number" min="0" step="100" inputmode="numeric" data-req></div><p class="error-msg">Required.</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Credit cards -->
+        <div class="field-grid" style="margin-top:24px">
+          <div class="field span-2"><label>Do you have credit cards?</label>
+            <div class="chip-group" role="radiogroup" data-req data-name="creditCards">
+              <label class="chip"><input type="radio" name="creditCards" value="No"><span>No</span></label>
+              <label class="chip"><input type="radio" name="creditCards" value="Yes"><span>Yes</span></label>
+            </div>
+            <p class="error-msg">Please choose an option.</p>
+          </div>
+        </div>
+        <div class="repeat cond" data-when="creditCards|Yes" id="cardRepeat"></div>
+
+        <!-- Other debt -->
+        <div class="field-grid" style="margin-top:24px">
+          <div class="field span-2"><label>Do you have any other debt?</label>
+            <div class="chip-group" role="radiogroup" data-req data-name="otherDebt">
+              <label class="chip"><input type="radio" name="otherDebt" value="No"><span>No</span></label>
+              <label class="chip"><input type="radio" name="otherDebt" value="Yes"><span>Yes</span></label>
+            </div>
+            <p class="error-msg">Please choose an option.</p>
+          </div>
+        </div>
+        <div class="repeat cond" data-when="otherDebt|Yes" id="debtRepeat"></div>
+      </fieldset>
+
+      <!-- ════ 9. IDENTITY & VERIFICATION ════ -->
+      <fieldset class="form-block">
+        <legend><span class="blk-eyebrow">Section 9</span>Identity &amp; verification</legend>
+        <div class="field-grid">
+          <div class="field span-2"><label>Do you have an Australian driver's licence?</label>
+            <div class="chip-group" role="radiogroup" data-req data-name="hasLicense">
+              <label class="chip"><input type="radio" name="hasLicense" value="Yes"><span>Yes</span></label>
+              <label class="chip"><input type="radio" name="hasLicense" value="No"><span>No</span></label>
+            </div>
+            <p class="error-msg">Please choose an option.</p>
+          </div>
+          <div class="field cond" data-when="hasLicense|Yes"><label for="idIssuedState">Driver's licence state</label>
+            <select class="select" id="idIssuedState" name="idIssuedState" data-req><option value="" disabled selected>Select</option><option>NSW</option><option>ACT</option><option>QLD</option><option>VIC</option><option>SA</option><option>NT</option><option>TAS</option><option>WA</option></select>
             <p class="error-msg">Please select the issuing state.</p>
           </div>
-          <div class="field span-2"><label for="idNumber">ID number</label><input class="input" id="idNumber" name="idNumber" type="text" autocomplete="off" required><p class="hint" id="idNumberHint">Select your ID type and issuing state and we'll show the expected format.</p><p class="error-msg" id="idNumberErr">Enter a valid ID number for the selected type.</p></div>
+          <div class="field cond" data-when="hasLicense|Yes"><label for="idNumber">Driver's licence number</label><input class="input" id="idNumber" name="idNumber" type="text" autocomplete="off" data-req><p class="error-msg">Please enter your licence number.</p></div>
+          <div class="field"><label for="medicareNumber">Medicare card number</label><input class="input" id="medicareNumber" name="medicareNumber" type="text" inputmode="numeric" data-req data-medicare><p class="error-msg">Enter your 10–11 digit Medicare number.</p></div>
+          <div class="field"><label for="medicareColour">Medicare card colour</label>
+            <select class="select" id="medicareColour" name="medicareColour" data-req><option value="" disabled selected>Select</option><option>Green</option><option>Blue</option><option>Yellow</option></select>
+            <p class="error-msg">Please choose.</p>
+          </div>
+          <div class="field"><label for="medicareExpiry">Medicare expiry (valid to) date</label><input class="input" id="medicareExpiry" name="medicareExpiry" type="date" data-req><p class="error-msg">Please enter the expiry date.</p></div>
+          <div class="field"><label for="dependants">How many dependants do you have?</label>
+            <select class="select" id="dependants" name="dependants" data-req><option value="" disabled selected>Select</option><option>0</option><option>1</option><option>2</option><option>3</option><option>4 or more</option></select>
+            <p class="error-msg">Please choose.</p>
+          </div>
+          <div class="field cond" data-when="dependants|1,2,3,4 or more"><label for="dep1Age">Dependant 1 age</label><input class="input" id="dep1Age" name="dep1Age" type="number" min="0" max="120" inputmode="numeric" data-req><p class="error-msg">Required.</p></div>
+          <div class="field cond" data-when="dependants|2,3,4 or more"><label for="dep2Age">Dependant 2 age</label><input class="input" id="dep2Age" name="dep2Age" type="number" min="0" max="120" inputmode="numeric" data-req><p class="error-msg">Required.</p></div>
+          <div class="field cond" data-when="dependants|3,4 or more"><label for="dep3Age">Dependant 3 age</label><input class="input" id="dep3Age" name="dep3Age" type="number" min="0" max="120" inputmode="numeric" data-req><p class="error-msg">Required.</p></div>
+          <div class="field cond" data-when="dependants|4 or more"><label for="dep4Age">Dependant 4 age</label><input class="input" id="dep4Age" name="dep4Age" type="number" min="0" max="120" inputmode="numeric" data-req><p class="error-msg">Required.</p></div>
         </div>
-        <p class="hint" style="margin-top:4px;color:rgb(111, 108, 99)">We'll verify your identity securely as part of assessment. Don't upload documents here.</p>
+        <p class="hint" style="margin-top:4px;color:rgb(111, 108, 99)">We verify your identity securely as part of assessment. Don't upload documents here.</p>
       </fieldset>
 
-      <!-- 6. REFERRAL -->
-      <fieldset class="form-block referral-block">
-        <legend><span class="blk-eyebrow">Section 6</span>Referral</legend>
-        <div class="field">
-          <label for="referral">Partner or referral code <span class="opt">(if you have one)</span></label>
-          <input class="input" id="referral" name="referral" type="text" placeholder="e.g. STYLIST-042" autocomplete="off">
-          <p class="hint">If a stylist, agent or tradesperson referred you, enter their code so they're credited.</p>
-        </div>
-      </fieldset>
-
-      <!-- 7. CONSENTS -->
+      <!-- ════ 10. DECLARATIONS ════ -->
       <fieldset class="form-block">
-        <legend><span class="blk-eyebrow">Section 7</span>Consent</legend>
-        <p class="collection-statement">By submitting this application you agree that MediPay Holdings Pty Limited (trading as Propential) may collect, use and disclose your personal and credit information to assess your application, verify your identity and manage your loan, as described in our <a href="legal/privacy.html" target="_blank">Privacy &amp; Credit Reporting Policy</a> and <a href="legal/credit-guide.html" target="_blank">Credit Guide</a>. This may include obtaining a credit report. This application is not a quote or approval and is subject to credit assessment.</p>
-        <div class="consent">
-          <input type="checkbox" id="consentPrivacy" name="consentPrivacy" required>
-          <label for="consentPrivacy">I have read and agree to the Privacy &amp; Credit Reporting Policy and consent to the collection and use of my information as described above.</label>
-        </div>
-        <div class="consent" style="margin-top:12px">
-          <input type="checkbox" id="consentAccuracy" name="consentAccuracy" required>
-          <label for="consentAccuracy">I confirm the information I've provided is true and complete to the best of my knowledge.</label>
-        </div>
-        <p class="error-msg" id="consentErr" style="margin-top:8px">Please tick both boxes to submit your application.</p>
+        <legend><span class="blk-eyebrow">Section 10</span>Declarations &amp; consent</legend>
+        <p class="collection-statement">Propential and RenoNow assess your application using the information you provide. Please review our <a href="legal/privacy.html" target="_blank">Privacy &amp; Credit Reporting Policy</a> and <a href="legal/credit-guide.html" target="_blank">Credit Guide</a>, then confirm the declarations below. This application is not a quote or approval and is subject to credit assessment.</p>
+
+        <div class="consent"><input type="checkbox" id="consentPrivacy" name="consentPrivacy" data-req><label for="consentPrivacy">Privacy Consent — I confirm I have accessed the Privacy Policy and Credit Reporting Policy and consent to the collection, use, holding and disclosure of my personal and credit-related information as described.</label></div>
+        <div class="consent" style="margin-top:12px"><input type="checkbox" id="consentConfirm" name="consentConfirm" data-req><label for="consentConfirm">I confirm that the information in this application relates to me and I am authorised to provide it.</label></div>
+        <div class="consent" style="margin-top:12px"><input type="checkbox" id="consentCitizen" name="consentCitizen" data-req><label for="consentCitizen">I confirm I am an Australian citizen or permanent resident.</label></div>
+        <div class="consent" style="margin-top:12px"><input type="checkbox" id="consentAccuracy" name="consentAccuracy" data-req><label for="consentAccuracy">I declare all information I have provided in this application is true and correct.</label></div>
+        <div class="consent" style="margin-top:12px"><input type="checkbox" id="consentCredit" name="consentCredit" data-req><label for="consentCredit">I give consent to check my credit history with credit reporting agencies (including Equifax) and to verify my identity with the document issuer or official record holder via a third party.</label></div>
+        <div class="consent" style="margin-top:12px"><input type="checkbox" id="consentElectronic" name="consentElectronic" data-req><label for="consentElectronic">I consent to being given notices and documents electronically, and to signing documents electronically.</label></div>
+        <div class="consent" style="margin-top:12px"><input type="checkbox" id="consentBiometric" name="consentBiometric" data-req><label for="consentBiometric">I acknowledge and consent to the collection and use of my biometric information for authentication/verification purposes, as described in the Privacy &amp; Credit Reporting Policy.</label></div>
+        <p class="error-msg" id="consentErr" style="margin-top:8px">Please tick every box to submit your application.</p>
       </fieldset>
+
+      <!-- hidden tracking -->
+      <input type="hidden" id="utmSource" name="utmSource">
+      <input type="hidden" id="utmMedium" name="utmMedium">
+      <input type="hidden" id="utmContent" name="utmContent">
+      <input type="hidden" id="utmCampaign" name="utmCampaign">
+      <input type="hidden" id="gclid" name="gclid">
 
       <button type="submit" class="btn btn-primary btn-lg btn-block">Submit application</button>
       <p class="form-foot">Submitting does not guarantee approval. All applications are subject to credit assessment and our lending criteria.</p>
@@ -178,11 +553,12 @@
 
 <script src="partials.js"></script>
 <script src="site.js"></script>
+<script src="job-data.js"></script>
 <script src="apply.js"></script>
 <script src="address-autocomplete.js"></script>
 
 <style id="apply-styles">
-.form-wrap { max-width: 820px; }
+.form-wrap { max-width: 860px; }
 .apply-head-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(28px, 5vw, 64px); align-items: end; }
 .apply-head-grid .lead { margin: 0; }
 @media (max-width: 760px) { .apply-head-grid { grid-template-columns: 1fr; gap: 18px; align-items: start; } }
@@ -195,11 +571,26 @@
 .opt { color: var(--text-faint); font-weight: 400; }
 .collection-statement { font-size: 0.82rem; color: var(--text-faint); margin-bottom: 18px; }
 .collection-statement a { color: var(--champagne); text-decoration: underline; text-underline-offset: 3px; }
-.referral-block { background: rgba(214,177,94,0.05); border: 1px solid var(--accent-line); border-radius: var(--radius); padding: 24px; }
-.referral-block legend { border-bottom: 0; padding-bottom: 8px; margin-bottom: 10px; }
 .form-foot { font-size: 0.78rem; color: var(--text-faint); text-align: center; margin-top: 16px; }
-.mortgage-only { display: none; }
-.mortgage-only.is-shown { display: block; }
+
+/* conditional + repeat blocks */
+.cond { display: none; }
+.cond.is-shown { display: block; }
+.field.cond.is-shown { display: block; }
+.addr-grid { display: grid; grid-template-columns: 1.4fr 0.8fr 0.8fr; gap: 12px; }
+@media (max-width: 560px) { .addr-grid { grid-template-columns: 1fr; } }
+.repeat { border: 1px solid var(--accent-line); border-radius: var(--radius); padding: 20px; margin-top: 6px; background: rgba(214,177,94,0.04); }
+.repeat .repeat { background: rgba(214,177,94,0.06); margin-top: 16px; }
+.sub-eyebrow { font-family: var(--font-body); text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.66rem; color: var(--champagne); font-weight: 600; margin: 0 0 12px; }
+.addmore { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; font-size: 0.85rem; color: var(--text-muted); cursor: pointer; }
+.addmore input { width: 16px; height: 16px; }
+
+/* combobox (job title) */
+.combo-wrap { position: relative; }
+.combo-list { position: absolute; z-index: 20; left: 0; right: 0; top: calc(100% + 4px); max-height: 240px; overflow-y: auto; background: var(--olive, #20231c); border: 1px solid var(--accent-line); border-radius: var(--radius); box-shadow: 0 12px 30px rgba(0,0,0,0.35); display: none; }
+.combo-list.is-open { display: block; }
+.combo-opt { padding: 9px 14px; font-size: 0.88rem; color: var(--ivory); cursor: pointer; }
+.combo-opt:hover, .combo-opt.is-active { background: rgba(214,177,94,0.16); }
 
 .result-panel { background: var(--olive); border: 1px solid var(--accent-line); border-radius: var(--radius-lg); padding: clamp(28px, 5vw, 56px); text-align: center; }
 .result-panel .result-mark { margin: 0 auto 22px; width: 68px; }
